@@ -1,0 +1,91 @@
+.main {
+  &Wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 10px;
+  }
+}
+
+.watchInfo {
+  // &Inner {
+  //   // max-width: 600px;
+  //   // display: flex;
+  //   // align-items: center;
+  //   // align-items: center;
+  // }
+
+  &Wrapper {  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    &:nth-child(odd) {  
+      flex-direction: row-reverse;
+    }
+  }
+
+  &Description { 
+    max-width: 600px;
+  }
+  &Logo {
+    margin-bottom: 40px;
+    justify-content: center;
+  }
+  &Size {
+    display: flex;
+    justify-content: center;
+
+    p {
+      padding: 15px 20px;
+      border: 1px solid #323232;
+      border-radius: 8px;
+      color: #323232;
+      margin-bottom: 20px;
+      &:not(:last-child) {
+        margin-right: 20px;
+      }
+    }
+  }
+  &Text {
+    text-align: center;
+    font-size: 18px;
+    line-height: 29px;
+    font-weight: 500;
+    color: #323232;
+    span {
+      font-weight: 700;
+    }
+  }
+}
+
+.slider {
+  position: relative;
+}
+.navButton {
+  z-index: 1;
+
+  button {
+    padding: 40px;
+    // background-color: #000;
+    border: none;
+    background: none;
+    outline: none;
+    &:nth-child(1) {
+      z-index: 1;
+      position: absolute;
+      left: -50px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    &:nth-child(2) {
+      z-index: 1;
+      position: absolute;
+      right: -50px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+}
+
+
+

@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "axios": "^0.26.1",
+    "node-sass": "^7.0.1",
+    "swiper": "^8.0.7"
+  }
+}

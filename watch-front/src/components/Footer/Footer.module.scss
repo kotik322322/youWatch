@@ -1,0 +1,97 @@
+.footer {
+  flex-shrink: 0;
+  background-color: #323232;
+  color: #fff;
+  &Wrapper {
+    display: flex;
+    justify-content: space-around;
+    padding: 30px 10px 60px;
+    margin: 0 auto;
+    max-width: 1200px;
+    width: 100%;
+
+  }
+  &Contacts {
+    a {
+      color: #aaaaaa;
+      margin-bottom: 5px;
+      &:hover {
+        color: #70bfff;
+      }
+    }
+    &Mail {
+      padding-top: 15px;
+    }
+    &Address {
+      font-size: 12px;
+      font-weight: 400;
+      color: #aaaaaa;
+      padding: 15px 0;
+    }
+    &Us {
+      
+      font-size: 18px;
+      padding-bottom: 15px;
+    } 
+    
+  }
+  &Services {
+    p{
+      font-size: 18px;
+      font-weight: 500;
+      padding-bottom: 20px;
+    }
+    a {
+      color: #aaaaaa;
+      &:hover {
+        color: #70bfff;
+      }
+      &:not(:last-child) {
+        padding-bottom: 25px;
+      }
+    }
+  }
+  &Links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &Social {
+    display: flex;
+    margin-bottom: 40px;
+    position: relative;
+    &::before {
+      position: absolute;
+      content: '';
+      width: 400px;
+      height: 1px;
+      bottom: -20px;
+      right: 0;
+      background-color: #565353;
+    }
+  }
+  &SocialMedia {
+    display: flex;
+    a {
+        margin-right: 20px;
+    }
+    
+  }
+  &SocialMessengers {
+    display: flex;
+    a {
+      &:not(:last-child) {
+        margin-right: 20px;
+      }
+    }
+  }
+  &Pay {
+    display: flex;
+  
+    a {
+      &:not(:last-child) {
+        margin-right: 20px;
+      }
+    }
+  }
+}

@@ -1,0 +1,91 @@
+.cardInfo {
+  width: 1200px;
+  margin: 0 auto 100px;
+  &Inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  &About {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1;
+    max-width: 600px;
+    width: 100%;
+    row-gap: 30px;
+  }
+  &Elements {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+  }
+  &Name {
+    font-size: 30px;
+    line-height: 32px;
+    font-weight: 500;
+  }
+  &Size {
+    display: flex;
+    p {
+      padding: 15px 25px;
+      border-radius: 5px;
+      border: 2px solid #80808036;
+      font-size: 20px;
+      line-height: 22px;
+      font-weight: 500;
+      cursor: pointer;
+      &:not(:last-child) {
+        margin-right: 20px;
+      }
+    }
+  }
+  &Price {
+    font-weight: 600;
+    font-size: 50px;
+  }
+  &Left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  &RightImg {
+    width: 300px;
+  }
+  &Range {
+    margin-top: 15px;
+    h6 {
+      text-align: center;
+      font-size: 18px;
+      line-height: 20px;
+      font-weight: 500;
+      margin: 10px 0 15px;
+      span {
+        font-size: 22px;
+        font-weight: 600;
+      }
+    }
+  }
+  &Colors {
+    display: flex;
+    // justify-content: center;
+    align-items: center;
+    width: 90px;
+    img {
+      padding: 5px;
+      border: 1px solid #00000029;
+      border-radius: 8px;
+      width: 100%;
+      &:not(:last-child) {
+        margin-right: 10px;
+      }
+    }
+  }
+  &Text {
+    font-size: 18px;
+    line-height: 20px;
+    font-weight: 400;
+  }
+}

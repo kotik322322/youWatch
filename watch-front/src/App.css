@@ -1,0 +1,58 @@
+@import '../node_modules/reset-css/sass/_reset.scss';
+html,
+body {
+
+  font-family: 'Inter', sans-serif;
+  /* background-color: #efefef4a; */
+  /* background-color: #f1f1f1;bgc */
+  /* background-color: rgb(245 245 247); */
+}
+
+a {
+  display: block;
+  text-decoration: none;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main {
+  flex-grow: 1;
+  width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px ;
+  margin-top: 150px;
+}
+
+/* .sliderPaginationList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.sliderPaginationDot {
+  padding: 3px;
+  border-radius: 50%;
+  background: #e3e3e3;
+  cursor: pointer;
+}
+
+.sliderPaginationDot > span {
+  display: block;
+}
+
+.sliderPaginationDot:not(:last-child) {
+  margin-right: 10px;
+  
+} */
+
+
+
+/* ====================временный стиль============================= */
+

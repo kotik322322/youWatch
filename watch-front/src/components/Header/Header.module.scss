@@ -1,0 +1,84 @@
+.header {
+  position: fixed;
+  z-index: 10345;
+  margin: 0 auto 20px;
+  left: 0;
+  right: 0;
+  padding: 15px 10px;
+  background-color: #f9f9f9;
+  box-shadow: 3px 5px 5px -4px rgba(0, 0, 0, 0.245);
+  
+  width: 100%;
+  &Wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &Logo {
+    width: 200px;
+    img {
+      width: 100%;
+    }
+  }
+  &Panel {
+    display: flex;
+  }
+  &Icons {
+    cursor: pointer;
+    &:not(:first-child) {
+      
+      margin-left: 30px;
+    }
+  }
+  &Search {
+    padding: 5px 0 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #222222;
+    &Input {
+      background-color: #efefef4a ; 
+      width: 300px;
+      height: 30px;
+      margin-right: 15px;
+      padding-left: 20px;
+      outline: none;
+      border: none;
+      font-size: 16px;
+      border-radius: 5px;
+      color: #222222;
+      font-weight: 500;
+    }
+    &img {
+      cursor: pointer;
+      padding-right: 10px;
+    }
+  }
+}
+
+
+
+.navigation {
+  margin-left: auto;
+  margin-right: 60px;
+  display: flex;
+  &List {
+    font-size: 18px;
+    color: #000;
+    cursor: pointer;
+    font-size: 22px;
+    font-weight: 500;
+    color: #222222;
+    &:focus {
+        color: #70bfff;
+      
+    }
+    &:not(:first-child) {
+      margin-left: 30px;
+    }
+  }
+ 
+}
+
