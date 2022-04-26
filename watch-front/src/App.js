@@ -16,39 +16,48 @@ import StorePage from './components/StorePage/StorePage';
 import MyAccount from './components/MyAccount/MyAccount';
 
 
+
+
 function App() {
 
+
   return (
-    <BrowserRouter>
-      <div className='App'>
-        <Header />
 
-        <div className='main'>
-        <Routes>
-        <Route path='/' element={<Main />} />
+  
+      <BrowserRouter>
 
-        <Route path='/cart' element={<Cart />} />
-        <Route path='/favorite' element={<Favorite />} />
 
-        <Route path='/contact_us' element={<ContactUs />} />
-        <Route path='/blog' element={<Blog />} />
-        <Route path='/store' element={<StorePage />} />
-        <Route path='/login' element={<MyAccount />} />
+        <div className='App'>
+          <Header />
+
+          <div className='main'>
+            <Routes>
+              <Route path='/' element={<Main />} />
+
+              <Route path='/cart' element={<Cart />} />
+              <Route path='/favorite' element={<Favorite />} />
+
+              <Route path='/contact_us' element={<ContactUs />} />
+              <Route path='/blog' element={<Blog />} />
+              <Route path='/store' element={<StorePage />} />
+              <Route path='/login' element={<MyAccount />} />
+              {/* <CardSlider /> */}
+
+
+
+            </Routes>
+            {/* <Card /> */}
+            {/* <CardInfo /> */}
+          </div>
           {/* <CardSlider /> */}
 
 
-
-        </Routes>
-          {/* <Card /> */}
-          {/* <CardInfo /> */}
+          <Footer />
         </div>
-          {/* <CardSlider /> */}
 
 
-        <Footer />
-      </div>
+      </BrowserRouter>
 
-    </BrowserRouter>
   );
 }
 

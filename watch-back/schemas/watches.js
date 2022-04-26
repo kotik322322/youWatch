@@ -22,16 +22,9 @@ const watchSchema = new mongoose.Schema({
     description : {
         type : String
     },
-    currentSeries : {
-        type : String
-    },
-    currentSize : {
-        type : String
-    },
-    currentColor : {
-        type : String
+    filter : {
+        type : {}
     }
-
 })
 
 export default watchSchema
