@@ -106,7 +106,7 @@ const StorePage = () => {
                             {filtersKey.map((key, index) => {
                                 return (
                                     <div key={index}>
-                                        <h4>{key}</h4>
+                                        <h4 className={styles.storeLeftFilterTitle}>{key}</h4>
                                         {filters[key].map((item) => {
                                             return (
                                                 <label key={item.id} className={styles.storeLeftLabel}>

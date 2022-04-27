@@ -21,8 +21,7 @@ import axios from "axios"
 const Main = () => {
   const [slides, setSlides] = React.useState([])
   React.useEffect(() => {
-    // axios.get('https://623c657d7efb5abea680319a.mockapi.io/slider').then(result => setSlides(result.data))
-
+    
     const response = async () => {
       const { data } = await axios.get('http://localhost:9000/slides')
       const slideCollection = data.map((item => item.slides))
