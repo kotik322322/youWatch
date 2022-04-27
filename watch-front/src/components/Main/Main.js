@@ -11,8 +11,12 @@ import logoSiries6 from '../../assets/main/apple-watch-series-6.png'
 import picSiries6 from '../../assets/main/apple_watch_siries_6.png'
 import logoSiries7 from '../../assets/main/apple-watch-series-7.png'
 import picSiries7 from '../../assets/main/apple_watch_siries_7.png'
-import next from '../../assets/next-arrow.svg'
-import prev from '../../assets/prev-arrow.svg'
+// import next from '../../assets/next-arrow.svg'
+// import prev from '../../assets/prev-arrow.svg'
+import {FaArrowLeft} from "react-icons/fa"
+import {FaArrowRight} from "react-icons/fa"
+
+
 
 
 import axios from "axios"
@@ -74,23 +78,12 @@ const Main = () => {
 
             <div className={styles.navButton}>
               <button className="slider-button-prev">
-                <img src={prev} alt="previous arrow" />
+                <FaArrowLeft  style={{ fontSize: "30px", color: "#9f9f9f" }}/>
               </button>
               <button className="slider-button-next">
-                <img src={next} alt="next arrow" />
+                <FaArrowRight style={{ fontSize: "30px", color: "#9f9f9f" }}/>
               </button>
             </div>
-
-            {/* <div className='sliderPagination'>
-              <ul className="sliderPaginationList">
-                {slides.map((item, index) => (
-                  <li key={index} className='sliderPaginationDot'>
-                    <span className='sliderPaginationDot'></span>
-                  </li>
-                ))}
-              </ul>
-            </div> */}
-
 
           </Swiper>
         </div>

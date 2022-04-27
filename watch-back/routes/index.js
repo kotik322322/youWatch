@@ -2,6 +2,7 @@ import getSlides from "./slides/getSlides.js"
 import getWatches from "./watches/getWatches.js"
 import filter from "./watches/filter.js"
 import getFilterList from "./getFilterList/getFilterList.js"
+import getImages from "./getImages/getImages.js"
 
 const routes = (app) => {
     getSlides(app)
@@ -11,6 +12,8 @@ const routes = (app) => {
     getFilterList(app)
     
     filter(app)
+
+    getImages(app)
 
 
 }
