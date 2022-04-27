@@ -16,7 +16,7 @@ const Card = ({ imageUrl, name, price, id }) => {
 
 
   return (
-    <div className={styles.card}>
+    <div key={id} className={styles.card}>
 
       <img className={styles.cardFavorite} src={favorite} alt="favorite" />
 
