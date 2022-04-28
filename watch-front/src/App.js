@@ -11,16 +11,20 @@ import axios from 'axios';
 
 function App() {
 
+
   const [images, setImages] = React.useState({
     icons: {},
     slides: []
   })
-  console.log(images);
+
 
   const {
     icons,
     slides
   } = images
+
+
+
 
   React.useEffect(() => {
     const getImages = async () => {
@@ -41,7 +45,9 @@ function App() {
         <Header
           icons={icons}
         />
-        <MainPage slides = {slides}/>
+        <MainPage
+         slides = {slides}
+         />
 
         <Footer
           icons={icons}

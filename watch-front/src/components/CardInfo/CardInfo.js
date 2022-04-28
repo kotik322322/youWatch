@@ -2,6 +2,7 @@ import React from 'react'
 import styles from "../CardInfo/CardInfo.module.scss"
 import Button from '../Button/Button'
 import Timer from '../Timer/Timer'
+import { useParams } from 'react-router-dom'
 
 
 
@@ -17,6 +18,8 @@ import CardSlider from '../CardSlider/CardSlider'
 
 
 const CardInfo = () => {
+
+
     return (
 
         <div className={styles.cardInfo}>

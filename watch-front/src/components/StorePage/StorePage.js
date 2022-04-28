@@ -6,10 +6,12 @@ import axios from 'axios';
 
 
 
+
 const StorePage = () => {
 
 
     const [items, setItems] = React.useState([])
+
 
     const [filters, setFilters] = React.useState({})
     const [filterList, setFilterList] = React.useState({
@@ -18,7 +20,6 @@ const StorePage = () => {
         Color: []
     })
     const [url, setUrl] = React.useState('')
-
 
     const filtersKey = Object.keys(filters);
 
@@ -95,7 +96,6 @@ const StorePage = () => {
 
     return (
         <div className={styles.store}>
-
             <h1 className={styles.storeTitle}> Choose your Apple Watch </h1>
             <div className={styles.storeWrapper}>
                 <div className={styles.storeInner}>
@@ -128,34 +128,27 @@ const StorePage = () => {
                         </div>
                     </div>
 
-
                     <div className={styles.storeRight}>
                         {items.length === 0 && <p style={{ textAlign: "center", fontWeight: "500", fontSize: "25px" }}>No products found for the corresponding categories</p>}
 
                         {
-
                             items.map((item, _id) => (
                                 <Card
                                     key={item._id}
                                     name={item.name}
                                     imageUrl={item.imageUrl[0]}
                                     price={item.price}
+                                    path={item._id}
                                 />
                             ))
                         }
 
                     </div>
-
-
                 </div>
             </div>
         </div>
 
-
-
-
     )
 }
-
 
 export default StorePage;
