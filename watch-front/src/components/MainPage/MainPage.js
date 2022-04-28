@@ -9,11 +9,11 @@ import Blog from '../Blog/Blog';
 import StorePage from '../StorePage/StorePage';
 import MyAccount from '../MyAccount/MyAccount';
 
-const MainPage = () => {
+const MainPage = ({slides}) => {
   return (
     <div>
          <Routes>
-            <Route path='/' element={<Main />} />
+            <Route path='/' element={<Main slides= {slides} />} />
 
             <Route path='/cart' element={<Cart />} />
 

@@ -6,11 +6,11 @@ import 'swiper/css';
 import "swiper/css/effect-fade";
 import 'swiper/scss/pagination';
 import logoSE from '../../assets/main/apple-watch-series-SE.png'
-import picSE from '../../assets/main/appleWatchSE1.png'
-import logoSiries6 from '../../assets/main/apple-watch-series-6.png'
-import picSiries6 from '../../assets/main/apple_watch_siries_6.png'
-import logoSiries7 from '../../assets/main/apple-watch-series-7.png'
-import picSiries7 from '../../assets/main/apple_watch_siries_7.png'
+// import picSE from '../../assets/main/appleWatchSE1.png'
+// import logoSiries6 from '../../assets/main/apple-watch-series-6.png'
+// import picSiries6 from '../../assets/main/apple_watch_siries_6.png'
+// import logoSiries7 from '../../assets/main/apple-watch-series-7.png'
+// import picSiries7 from '../../assets/main/apple_watch_siries_7.png'
 // import next from '../../assets/next-arrow.svg'
 // import prev from '../../assets/prev-arrow.svg'
 import {FaArrowLeft} from "react-icons/fa"
@@ -18,23 +18,7 @@ import {FaArrowRight} from "react-icons/fa"
 
 
 
-
-import axios from "axios"
-
-
-const Main = () => {
-  const [slides, setSlides] = React.useState([])
-  React.useEffect(() => {
-    
-    const response = async () => {
-      const { data } = await axios.get('http://localhost:9000/slides')
-      const slideCollection = data.map((item => item.slides))
-      setSlides(slideCollection)
-    }
-
-    response()
-  }, [])
-
+const Main = ({slides}) => {
 
   return (
     <div className={styles.main}>
@@ -52,15 +36,10 @@ const Main = () => {
             loop={true}
             pagination={{
               clickable: true,
-              // el: ".sliderPagination",
-              // type: 'custom',
-              // bulletClass: 'sliderPaginationDot',
             }}
             loopedSlides={8}
             speed={1000}
             slidesPerView={1}
-            // onSlideChange={() => console.log('privet')}
-            // onSwiper={(swiper) => console.log(swiper)}
             navigation={{
               nextEl: ".slider-button-next",
               prevEl: ".slider-button-prev",
@@ -113,7 +92,7 @@ const Main = () => {
                 </div>
 
                         <div className={styles.watchInfoImg}>
-                          <img src={picSE} alt="se" />
+                          {/* <img src={picSE} alt="se" />           /////////////////////////////// */}
                         </div>
               </div>
 
@@ -124,7 +103,7 @@ const Main = () => {
                 <div className={styles.watchInfoDescription}>
 
                     <div className={styles.watchInfoLogo}>
-                      <img src={logoSiries6} alt="apple_watch_siries_6" />
+                      {/* <img src={logoSiries6} alt="apple_watch_siries_6" />   ///////////////////////////////////// */}
                     </div>
 
                        <div className={styles.watchInfoSize}>
@@ -138,7 +117,7 @@ const Main = () => {
                 </div>
 
                         <div className={styles.watchInfoImg}>
-                          <img src={picSiries6} alt="picSiries6" />
+                          {/* <img src={picSiries6} alt="picSiries6" />    //////////////// */}
                         </div>
               </div>
 
@@ -147,7 +126,7 @@ const Main = () => {
                 <div className={styles.watchInfoDescription}>
 
                     <div className={styles.watchInfoLogo}>
-                      <img src={logoSiries7} alt="apple_watch_siries_7" />
+                      {/* <img src={logoSiries7} alt="apple_watch_siries_7" />   /////// */}
                     </div>
 
                        <div className={styles.watchInfoSize}>
@@ -161,7 +140,7 @@ const Main = () => {
                 </div>
 
                         <div className={styles.watchInfoImg}>
-                          <img src={picSiries7} alt="picSiries7" />
+                          {/* <img src={picSiries7} alt="picSiries7" />    ////////////// */}
                         </div>
               </div>
 
