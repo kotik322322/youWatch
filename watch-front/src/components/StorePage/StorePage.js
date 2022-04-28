@@ -2,13 +2,14 @@ import React from 'react';
 import styles from '../StorePage/StorePage.module.scss';
 import Card from '../Card/Card'
 import axios from 'axios';
-
+import { useDispatch } from 'react-redux';
+import { setInfoToCardAC } from '../../store/actionCreators/setInfoToCardAC';
 
 
 
 
 const StorePage = () => {
-
+    const dispatch = useDispatch()
 
     const [items, setItems] = React.useState([])
 
@@ -93,6 +94,13 @@ const StorePage = () => {
         }
     }
 
+    const currentRoute = (id) => {
+        items.filter(item => {
+            if(id === item._id) {
+                return dispatch(setInfoToCardAC(item))
+            }
+        })
+    }
 
     return (
         <div className={styles.store}>
@@ -102,7 +110,6 @@ const StorePage = () => {
                     <div className={styles.storeLeft}>
                         <div className={styles.storeFilter}>
                             <h3 className={styles.storeLeftTitle}> Apple Watch </h3>
-
                             {filtersKey.map((key, index) => {
                                 return (
                                     <div key={index}>
@@ -139,10 +146,10 @@ const StorePage = () => {
                                     imageUrl={item.imageUrl[0]}
                                     price={item.price}
                                     path={item._id}
+                                    onClick={() => currentRoute(item._id)}
                                 />
                             ))
                         }
-
                     </div>
                 </div>
             </div>

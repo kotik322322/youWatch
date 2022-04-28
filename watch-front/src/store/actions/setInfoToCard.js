@@ -1,0 +1,1 @@
+export const SET_INFO_TO_CARD = 'SET_INFO_TO_CARD'

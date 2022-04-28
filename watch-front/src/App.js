@@ -11,20 +11,15 @@ import axios from 'axios';
 
 function App() {
 
-
   const [images, setImages] = React.useState({
     icons: {},
     slides: []
   })
 
-
   const {
     icons,
     slides
   } = images
-
-
-
 
   React.useEffect(() => {
     const getImages = async () => {

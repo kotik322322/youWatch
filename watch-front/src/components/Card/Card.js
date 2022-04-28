@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 
 
-const Card = ({ imageUrl, name, price, _id, path }) => {
+const Card = ({ imageUrl, name, price, _id, path, onClick }) => {
 
 
 
@@ -14,7 +14,7 @@ const Card = ({ imageUrl, name, price, _id, path }) => {
     <div key={_id} className={styles.card}>
       <img className={styles.cardFavorite} src={favorite} alt="favorite" />
 
-      <Link to={path}>
+      <Link onClick={onClick} to={path}>
         <div className={styles.cardImg}>
           <img src={imageUrl} alt="itemImg" />
         </div>
