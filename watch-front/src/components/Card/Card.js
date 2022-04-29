@@ -14,7 +14,7 @@ const Card = ({ imageUrl, name, price, _id, path, onClick }) => {
     <div key={_id} className={styles.card}>
       <img className={styles.cardFavorite} src={favorite} alt="favorite" />
 
-      <Link onClick={onClick} to={path}>
+      <Link style={{color: "inherit"}} onClick={onClick} to={path}>
         <div className={styles.cardImg}>
           <img src={imageUrl} alt="itemImg" />
         </div>

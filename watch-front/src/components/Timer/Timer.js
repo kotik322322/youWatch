@@ -37,7 +37,9 @@ const Timer = () => {
 
     useEffect(() => {
         startTimer()
-    }, [])
+    }, [
+        // timerDays, timerHours,timerMinutes, timerSeconds
+     ])
 
 
     return (

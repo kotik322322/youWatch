@@ -10,7 +10,7 @@ import StorePage from '../StorePage/StorePage';
 import MyAccount from '../MyAccount/MyAccount';
 import CardInfo from '../CardInfo/CardInfo'
 
-const MainPage = ({slides, items}) => {
+const MainPage = ({slides}) => {
 
    
   return (
@@ -28,7 +28,7 @@ const MainPage = ({slides, items}) => {
             
             <Route path='/store' element={<StorePage />} />
 
-            <Route  path={`/store/:_id`} element={<CardInfo items= {items} />}/>
+            <Route  path={`/store/:_id`} element={<CardInfo />}/>
             
             <Route path='/login' element={<MyAccount />} />
 

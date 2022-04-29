@@ -9,13 +9,14 @@ import { useSelector } from 'react-redux'
 const CardInfo = () => {
 
     const [tab, setTab] = React.useState(0)
+
     const { items: { infoToCard } } = useSelector((state) => state)
 
     const { description, imageUrl, name, price, productColors, size, warranty } = infoToCard
 
     return (
 
-        <div className={styles.cardInfo}>
+        <div  className={styles.cardInfo}>
             <div className={styles.cardInfoWrapper}>
                 <div className={styles.cardInfoInner}>
 
@@ -50,20 +51,19 @@ const CardInfo = () => {
                         <div className={styles.cardInfoElements}>
                             <div className={styles.cardInfoLeft}>
                                 <div className={styles.cardInfoSize}>
-                                    {size.map(el => <p>{el}</p>)}
+                                    {size.map((el, index) => (
+                                        <p key={index}>{el}</p>
+                                    ))}
                                 </div>
-
 
                                 <div className={styles.cardInfoPrice}>
                                     <p>{price}</p>
                                 </div>
-
                                 <Button text={'Add to cart'} />
                             </div>
 
                             <div className={styles.cardInfoRight}>
                                 <Timer />
-
                                 <img className={styles.cardInfoRightImg} src={warranty} alt="" />
                             </div>
                         </div>
@@ -71,23 +71,18 @@ const CardInfo = () => {
                         <div className={styles.cardInfoRange}>
                             <h6><span>Series 7</span> colors</h6>
                             <div className={styles.cardInfoColors}>
-                                {productColors.map(color => (
-                                    <img src={color} alt="" />
+                                {productColors.map((color, index) => (
+                                    <img key={index} src={color} alt="" />
                                 ))}
                             </div>
                         </div>
 
                         <div className={styles.cardInfoText}>
                             {description}
-
-
                         </div>
                     </div>
-
                 </div>
-
             </div>
-
         </div>
     )
 }

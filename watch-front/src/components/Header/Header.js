@@ -8,8 +8,8 @@ import { GrCart } from "react-icons/gr"
 import { GrSearch } from "react-icons/gr"
 
 
-const Header = ({icons}) => {
-  
+const Header = ({ icons }) => {
+
   return (
     <header className={styles.header}>
       <div className={styles.headerWrapper}>

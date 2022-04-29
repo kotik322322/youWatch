@@ -1,18 +1,9 @@
 import React from 'react'
 import styles from '../Footer/Footer.module.scss'
-// import logo from '../../assets/apple.svg'
-// import facebook from '../../assets/facebook.svg'
-// import twitter from '../../assets/twitter.svg'
-// import youtube from '../../assets/youtube.svg'
-// import telegram from '../../assets/telegram.svg'
-// import instagram from '../../assets/instagram.svg'
-// import viber from '../../assets/viber.svg'
-// import visa from '../../assets/visa.svg'
-// import mastercard from '../../assets/mastercard.svg'
-// import paypal from '../../assets/paypal.svg'
 
 
-const Footer = ({icons}) => {
+
+const Footer = ({ icons }) => {
   return (
     <footer className={styles.footer}>
       <div className={styles.footerWrapper}>
