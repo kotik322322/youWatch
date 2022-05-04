@@ -8,10 +8,9 @@ import { GlobalState } from "../../GloabalState"
 
 
 const StorePage = ({ filters }) => {
+    
     const state = useContext(GlobalState)
     const [cart, setCart] = state.cart
-
-
 
     const [items, setItems] = React.useState([])
     const [url, setUrl] = React.useState('')
@@ -22,30 +21,21 @@ const StorePage = ({ filters }) => {
         Color: []
     })
 
-
     const filtersKey = Object.keys(filters);
 
     const transformURL = () => {
         let result = []
-        if (filterList.Series.length > 0) {
-            filterList.Series.map(arr => {
-                return result.push(`filter.Series[]=${arr}`)
-            })
-        }
-        if (filterList.Size.length > 0) {
-            filterList.Size.map(arr => {
-                return result.push(`filter.Size[]=${arr}`)
-            })
-        }
-        if (filterList.Color.length > 0) {
-            filterList.Color.map(arr => {
-                return result.push(`filter.Color[]=${arr}`)
-            })
-        }
-
+        filtersKey.map(key => {
+            if (filterList[key].length > 0) {
+                filterList[key].map(arr => {
+                    return result.push(`filter.${key}[]=${arr}`)
+                })
+            }
+        })
 
         const resultUrl = `?${result.toString().replace(/,/g, "&")}`
         setUrl(resultUrl)
+        console.log(url);
     }
 
 
@@ -85,7 +75,7 @@ const StorePage = ({ filters }) => {
     }
 
     const addToCart = (item) => {
-      return setCart([...cart, item])
+      return setCart([...cart, item]) 
     }
 
 
