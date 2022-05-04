@@ -1,26 +1,27 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styles from '../StorePage/StorePage.module.scss';
 import Card from '../Card/Card'
 import axios from 'axios';
-import { useDispatch } from 'react-redux';
-import { setInfoToCardAC } from '../../store/actionCreators/setInfoToCardAC';
+import { GlobalState } from "../../GloabalState"
 
 
 
 
-const StorePage = () => {
-    const dispatch = useDispatch()
+const StorePage = ({ filters }) => {
+    const state = useContext(GlobalState)
+    const [cart, setCart] = state.cart
+
+
 
     const [items, setItems] = React.useState([])
+    const [url, setUrl] = React.useState('')
 
-
-    const [filters, setFilters] = React.useState({})
     const [filterList, setFilterList] = React.useState({
         Series: [],
         Size: [],
         Color: []
     })
-    const [url, setUrl] = React.useState('')
+
 
     const filtersKey = Object.keys(filters);
 
@@ -47,17 +48,6 @@ const StorePage = () => {
         setUrl(resultUrl)
     }
 
-    React.useEffect(() => {
-        const getFilters = async () => {
-            const { data } = await axios.get('http://localhost:9000/filters')
-            const [filterObj] = data
-            const { filters } = filterObj
-
-            setFilters(filters)
-        }
-        getFilters()
-
-    }, [])
 
     React.useEffect(() => {
         const getWatches = async () => {
@@ -94,13 +84,10 @@ const StorePage = () => {
         }
     }
 
-    const currentRoute = (id) => {
-        items.filter(item => {
-            if(id === item._id) {
-                return dispatch(setInfoToCardAC(item))
-            }
-        })
+    const addToCart = (item) => {
+      return setCart([...cart, item])
     }
+
 
     return (
         <div className={styles.store}>
@@ -146,7 +133,7 @@ const StorePage = () => {
                                     imageUrl={item.imageUrl[0]}
                                     price={item.price}
                                     path={item._id}
-                                    onClick={() => currentRoute(item._id)}
+                                    addToCart={() => addToCart(item)}
                                 />
                             ))
                         }

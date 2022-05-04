@@ -2,10 +2,10 @@ import React from 'react'
 import styles from '../Button/Button.module.scss'
 
 
-const Button = ({onclick, text}) => {
+const Button = ({ text, onClick}) => {
   return (
     <>
-        <button onClick={onclick} className={styles.button} role="button">{text}</button>
+        <button onClick={onClick}  className={styles.button} role="button">{text}</button>
     </>
   )
 }

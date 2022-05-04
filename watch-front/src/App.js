@@ -15,6 +15,7 @@ function App() {
     icons: {},
     slides: []
   })
+  const [filters, setFilters] = React.useState({})
 
   const {
     icons,
@@ -22,15 +23,19 @@ function App() {
   } = images
 
   React.useEffect(() => {
-    const getImages = async () => {
-      const { data } = await axios.get('http://localhost:9000/images')
-      const [{ icons, slides }] = data
+    const getStates = async () => {
+      const { data: [{ icons, slides }] } = await axios.get('http://localhost:9000/images')
       setImages({
         icons: icons,
         slides: slides
       })
+      const { data: [{ filters }] } = await axios.get('http://localhost:9000/filters')
+      setFilters(filters)
     }
-    getImages()
+
+
+    getStates()
+
   }, [])
 
 
@@ -41,8 +46,9 @@ function App() {
           icons={icons}
         />
         <MainPage
-         slides = {slides}
-         />
+          slides={slides}
+          filters={filters}
+        />
 
         <Footer
           icons={icons}

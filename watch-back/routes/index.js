@@ -3,6 +3,7 @@ import getWatches from "./watches/getWatches.js"
 import filter from "./watches/filter.js"
 import getFilterList from "./getFilterList/getFilterList.js"
 import getImages from "./getImages/getImages.js"
+import getCardInfo from "./getCardInfo/getCardInfo.js"
 
 const routes = (app) => {
     getSlides(app)
@@ -12,6 +13,8 @@ const routes = (app) => {
     getFilterList(app)
     
     filter(app)
+    
+    getCardInfo(app)
 
     getImages(app)
 

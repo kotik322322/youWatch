@@ -1,14 +1,17 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import styles from '../Cart/Cart.module.scss';
 import Button from '../Button/Button';
 
 import imgWatch from "../../assets/watch.png";
 import imgTrash from "../../assets/cart/icons_trash.svg";
-
+import {GlobalState} from "../../GloabalState"
 
 
 const Cart = () => {
-
+    const state = useContext(GlobalState)
+    const [cart] = state.cart
+        console.log(cart);
+    
  return (
      
     <div className={styles.cart}>
@@ -23,53 +26,24 @@ const Cart = () => {
                     <p>Price</p>
                  </div>
 
-                    <div className={styles.cartInfo}>
+                    {cart.map(product => (
+                        <div className={styles.cartInfo}>
 
-                        <img className={styles.cartInfoPic} src={imgWatch} alt="img_watch" />
+                        <img className={styles.cartInfoPic} src={product.imageUrl[0]} alt="product photo" />
 
                         <div className={styles.cartInfoText}>
-                            <p className={styles.cartInfoName}> Apple Watch Series SE 40mm Gold with Starlight Sport Band (MKQ03) </p>
-                            <p className={styles.cartInfoOption}> <span>Color:</span> Gold</p>
-                            <p className={styles.cartInfoOption}> <span>Size:</span> 40 mm</p>
+                            <p className={styles.cartInfoName}>{product.name}</p>
+                            <p className={styles.cartInfoOption}> <span>Color: </span> {product.filter.Color}</p>
+                            <p className={styles.cartInfoOption}> <span>Size:</span> {product.filter.Size} mm</p>
                         </div>
 
                         <img className={styles.cartInfoTrash} src={imgTrash} alt="img_trash" />
 
-                        <p className={styles.cartInfoPrice}> $ 360 </p>
+                        <p className={styles.cartInfoPrice}> {product.price}</p>
 
                     </div>
+                    ))}
 
-                    <div className={styles.cartInfo}>
-
-                        <img className={styles.cartInfoPic} src={imgWatch} alt="img_watch" />
-
-                        <div className={styles.cartInfoText}>
-                            <p className={styles.cartInfoName}> Apple Watch Series SE 40mm Gold with Starlight Sport Band (MKQ03) </p>
-                            <p className={styles.cartInfoOption}> <span>Color:</span> Gold</p>
-                            <p className={styles.cartInfoOption}> <span>Size:</span> 40 mm</p>
-                        </div>
-
-                        <img className={styles.cartInfoTrash} src={imgTrash} alt="img_trash" />
-
-                        <p className={styles.cartInfoPrice}> $ 360 </p>
-
-                    </div>
-
-                    <div className={styles.cartInfo}>
-
-                        <img className={styles.cartInfoPic} src={imgWatch} alt="img_watch" />
-
-                        <div className={styles.cartInfoText}>
-                            <p className={styles.cartInfoName}> Apple Watch Series SE 40mm Gold with Starlight Sport Band (MKQ03) </p>
-                            <p className={styles.cartInfoOption}> <span>Color:</span> Gold</p>
-                            <p className={styles.cartInfoOption}> <span>Size:</span> 40 mm</p>
-                        </div>
-
-                        <img className={styles.cartInfoTrash} src={imgTrash} alt="img_trash" />
-
-                        <p className={styles.cartInfoPrice}> $ 360 </p>
-
-                    </div>
 
                     <div className={styles.cartFooter}>
 
