@@ -2,16 +2,16 @@ import React, { useContext } from 'react';
 import styles from '../StorePage/StorePage.module.scss';
 import Card from '../Card/Card'
 import axios from 'axios';
-import { GlobalState } from "../../GloabalState"
+// import { GlobalState } from "../../GloabalState"
 
 
 
 
 const StorePage = ({ filters }) => {
-    
-    const state = useContext(GlobalState)
-    const [cart, setCart] = state.cart
 
+    // const state = useContext(GlobalState)
+    // const [cart, setCart] = state.cart
+    // console.log(cart);
     const [items, setItems] = React.useState([])
     const [url, setUrl] = React.useState('')
 
@@ -20,7 +20,8 @@ const StorePage = ({ filters }) => {
         Size: [],
         Color: []
     })
-
+    const [storage, setStorage] = React.useState(JSON.parse(localStorage.getItem('cart')) || [])
+    console.log(storage);
     const filtersKey = Object.keys(filters);
 
     const transformURL = () => {
@@ -35,7 +36,6 @@ const StorePage = ({ filters }) => {
 
         const resultUrl = `?${result.toString().replace(/,/g, "&")}`
         setUrl(resultUrl)
-        console.log(url);
     }
 
 
@@ -45,7 +45,6 @@ const StorePage = ({ filters }) => {
             setItems(data)
         }
         getWatches()
-
     }, [url])
 
 
@@ -73,9 +72,10 @@ const StorePage = ({ filters }) => {
             })
         }
     }
-
-    const addToCart = (item) => {
-      return setCart([...cart, item]) 
+    
+    const addToCart =  (item) => {
+        localStorage.setItem('cart', JSON.stringify([...storage, item]))
+        setStorage(JSON.parse(localStorage.getItem('cart')r      <q></q>))
     }
 
 
