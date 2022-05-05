@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 
 
-const Card = ({ imageUrl, name, price, _id, path, addToCart }) => {
+const Card = ({ imageUrl, name, price, _id, path, addToCart, text }) => {
 
 
 
@@ -34,10 +34,10 @@ const Card = ({ imageUrl, name, price, _id, path, addToCart }) => {
         {price}
       </p>
 
-        
+
       <Button
-        text={'Add to cart'}
-        onClick = {addToCart}
+        text={text}
+        onClick={addToCart}
       />
 
 

@@ -1,27 +1,35 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styles from '../StorePage/StorePage.module.scss';
 import Card from '../Card/Card'
 import axios from 'axios';
-// import { GlobalState } from "../../GloabalState"
-
 
 
 
 const StorePage = ({ filters }) => {
 
-    // const state = useContext(GlobalState)
-    // const [cart, setCart] = state.cart
-    // console.log(cart);
+
     const [items, setItems] = React.useState([])
     const [url, setUrl] = React.useState('')
-
+    const [storage, setStorage] = React.useState(JSON.parse(localStorage.getItem('cart')) || [])
     const [filterList, setFilterList] = React.useState({
         Series: [],
         Size: [],
         Color: []
     })
-    const [storage, setStorage] = React.useState(JSON.parse(localStorage.getItem('cart')) || [])
-    console.log(storage);
+
+    React.useEffect(() => {
+        const getWatches = async () => {
+            const { data } = await axios.get(`http://localhost:9000/watches-name${url}`)
+            setItems(data)
+        }
+        getWatches()
+    }, [url])
+
+
+    React.useEffect(() => {
+        transformURL()
+    }, [filterList])
+
     const filtersKey = Object.keys(filters);
 
     const transformURL = () => {
@@ -38,19 +46,6 @@ const StorePage = ({ filters }) => {
         setUrl(resultUrl)
     }
 
-
-    React.useEffect(() => {
-        const getWatches = async () => {
-            const { data } = await axios.get(`http://localhost:9000/watches-name${url}`)
-            setItems(data)
-        }
-        getWatches()
-    }, [url])
-
-
-    React.useEffect(() => {
-        transformURL()
-    }, [filterList])
 
     const handleFilter = (e, key) => {
         if (e.target.value === key) {
@@ -75,7 +70,8 @@ const StorePage = ({ filters }) => {
     
     const addToCart =  (item) => {
         localStorage.setItem('cart', JSON.stringify([...storage, item]))
-        setStorage(JSON.parse(localStorage.getItem('cart')r      <q></q>))
+        setStorage(JSON.parse(localStorage.getItem('cart')))
+
     }
 
 
@@ -124,6 +120,7 @@ const StorePage = ({ filters }) => {
                                     price={item.price}
                                     path={item._id}
                                     addToCart={() => addToCart(item)}
+                                    text = {'Add to cart'}
                                 />
                             ))
                         }

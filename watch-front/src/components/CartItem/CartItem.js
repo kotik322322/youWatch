@@ -2,7 +2,7 @@ import React from 'react'
 import styles from "./CartItem.module.scss"
 import imgTrash from "../../assets/cart/icons_trash.svg";
 
-const CartItem = ({imageUrl, name, color, size, price}) => {
+const CartItem = ({imageUrl, name, color, size, price, onClick}) => {
     return (
         <div className={styles.cartInfo}>
 
@@ -14,7 +14,12 @@ const CartItem = ({imageUrl, name, color, size, price}) => {
                 <p className={styles.cartInfoOption}> <span>Size:</span> {size} mm</p>
             </div>
 
-            <img className={styles.cartInfoTrash} src={imgTrash} alt="img_trash" />
+            <img 
+            className={styles.cartInfoTrash} 
+            src={imgTrash} 
+            alt="img_trash" 
+            onClick={onClick}
+            />
 
             <p className={styles.cartInfoPrice}> {price}</p>
 

@@ -6,14 +6,20 @@ import CartItem from '../CartItem/CartItem';
 
 
 const Cart = () => {
-    // const state = useContext(GlobalState)
-    const [cart, setCart] = React.useState([])
-    console.log(cart.length);
+    const state = useContext(GlobalState)
+    const [cart, setCart] = state.cart
+    console.log(cart);
 
     React.useEffect(() => {
         const result = localStorage.getItem('cart')
-        result ?  setCart(JSON.parse(result)) : setCart([])
+        result ? setCart(JSON.parse(result)) : setCart([])
     }, [])
+
+    const deleteProduct = (id) => {
+        const filtered = cart.filter(item => item._id !== id)
+        const removedFromStorage = localStorage.setItem('cart', JSON.stringify(filtered))
+        setCart(JSON.parse(localStorage.getItem('cart')))
+    }
 
     return (
 
@@ -33,11 +39,13 @@ const Cart = () => {
                         cart.length
                             ? cart.map(item =>
                                 <CartItem
+                                    key={item._id}
                                     imageUrl={item.imageUrl[0]}
                                     name={item.name}
                                     color={item.filter.Color}
                                     size={item.filter.Size}
                                     price={item.price}
+                                    onClick={() => deleteProduct(item._id)}
                                 />)
                             : <h4 className={styles.cartStatus}> Your cart is empty </h4>
                     }
