@@ -5,13 +5,17 @@ import Timer from '../Timer/Timer'
 import { useNavigate, useParams } from "react-router-dom"
 import axios from 'axios'
 import Loader from "../Loader/Loader"
-
+import {GlobalState} from "../../GloabalState"
 
 
 
 const CardInfo = () => {
     const { _id } = useParams()
+    const state = React.useContext(GlobalState)
 
+    const [cart, setCart] = state.cart
+    console.log(cart);
+    const [isLoading, setIsLoading] = React.useState(true)
     const [info, setInfo] = React.useState({
         description : '',
         imageUrl : [],
@@ -22,7 +26,6 @@ const CardInfo = () => {
         warranty : ''
     }) 
     const [tab, setTab] = React.useState(0)
-    const [isLoading, setIsLoading] = React.useState(true)
 
     React.useEffect(() => {
         const getCardInfo = async () => {
@@ -41,6 +44,10 @@ const CardInfo = () => {
         }
         getCardInfo()
     }, [])
+
+    // const addProduct = () => {
+    //     const result = cart
+    // }
 
 
     const navigate = useNavigate()
@@ -94,7 +101,7 @@ const CardInfo = () => {
                                 <div className={styles.cardInfoPrice}>
                                     <p>{info.price}</p>
                                 </div>
-                                <Button text={'Add to cart'} />
+                                <Button onClick={() => console.log('hello')} text={'Add to cart'} />
                             </div>
 
                             <div className={styles.cardInfoRight}>

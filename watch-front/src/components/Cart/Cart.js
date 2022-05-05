@@ -8,7 +8,6 @@ import CartItem from '../CartItem/CartItem';
 const Cart = () => {
     const state = useContext(GlobalState)
     const [cart, setCart] = state.cart
-    console.log(cart);
 
     React.useEffect(() => {
         const result = localStorage.getItem('cart')
@@ -17,8 +16,29 @@ const Cart = () => {
 
     const deleteProduct = (id) => {
         const filtered = cart.filter(item => item._id !== id)
-        const removedFromStorage = localStorage.setItem('cart', JSON.stringify(filtered))
+        const newStorage = localStorage.setItem('cart', JSON.stringify(filtered))
         setCart(JSON.parse(localStorage.getItem('cart')))
+    }
+
+    const addProduct = (id) => {
+        const currentQuantity = cart.find(item => item._id === id)
+        currentQuantity.quantity += 1
+        const result = cart.map(item => item._id === currentQuantity.id ? currentQuantity : item)  //Замена текущео элемента на новый с количеством
+        const newStorage = localStorage.setItem('cart', JSON.stringify(result))
+        setCart(JSON.parse(localStorage.getItem('cart')))
+    }
+
+    const removeProduct = (id) => {
+        const currentQuantity = cart.find(item => item._id === id)
+        currentQuantity.quantity -= 1
+        const result = cart.map(item => item._id === currentQuantity.id ? currentQuantity : item)  //Замена текущео элемента на новый с количеством
+        const newStorage = localStorage.setItem('cart', JSON.stringify(result))
+        setCart(JSON.parse(localStorage.getItem('cart')))
+        if(currentQuantity.quantity === 0) {
+            const zeroQuantity = cart.filter(item => item._id !== id)
+            const newStorage = localStorage.setItem('cart', JSON.stringify(zeroQuantity))
+            setCart(JSON.parse(localStorage.getItem('cart')))
+        }
     }
 
     return (
@@ -45,7 +65,10 @@ const Cart = () => {
                                     color={item.filter.Color}
                                     size={item.filter.Size}
                                     price={item.price}
+                                    quantity = {item.quantity}
                                     onClick={() => deleteProduct(item._id)}
+                                    addProduct={() => addProduct(item._id)}
+                                    removeProduct={() => removeProduct(item._id)}
                                 />)
                             : <h4 className={styles.cartStatus}> Your cart is empty </h4>
                     }

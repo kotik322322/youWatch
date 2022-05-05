@@ -69,6 +69,7 @@ const StorePage = ({ filters }) => {
     }
     
     const addToCart =  (item) => {
+        item.quantity = 1
         localStorage.setItem('cart', JSON.stringify([...storage, item]))
         setStorage(JSON.parse(localStorage.getItem('cart')))
 
