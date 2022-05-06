@@ -14,7 +14,9 @@ const CardInfo = () => {
     const state = React.useContext(GlobalState)
 
     const [cart, setCart] = state.cart
+    const [products] = state.products
     console.log(cart);
+
     const [isLoading, setIsLoading] = React.useState(true)
     const [info, setInfo] = React.useState({
         description : '',
@@ -45,9 +47,16 @@ const CardInfo = () => {
         getCardInfo()
     }, [])
 
-    // const addProduct = () => {
-    //     const result = cart
-    // }
+    const addProduct = () => {
+        const currentProduct = products.find(item => {
+            return item._id === _id
+        });
+        currentProduct.quantity = 1
+        const newCart = [...cart, currentProduct]
+        const newStorage = localStorage.setItem('cart', JSON.stringify(newCart))
+        setCart(JSON.parse(localStorage.getItem('cart')))
+        
+    }
 
 
     const navigate = useNavigate()
@@ -101,7 +110,7 @@ const CardInfo = () => {
                                 <div className={styles.cardInfoPrice}>
                                     <p>{info.price}</p>
                                 </div>
-                                <Button onClick={() => console.log('hello')} text={'Add to cart'} />
+                                <Button onClick={addProduct} text={'Add to cart'} />
                             </div>
 
                             <div className={styles.cardInfoRight}>

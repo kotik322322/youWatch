@@ -10,7 +10,9 @@ const StorePage = ({ filters }) => {
 
     const [items, setItems] = React.useState([])
     const [url, setUrl] = React.useState('')
-    const [storage, setStorage] = React.useState(JSON.parse(localStorage.getItem('cart')) || [])
+    // const [storage, setStorage] = React.useState(JSON.parse(localStorage.getItem('cart')) || [])
+    const [cart, setCart] = React.useState(JSON.parse(localStorage.getItem('cart')) || [])
+
     const [filterList, setFilterList] = React.useState({
         Series: [],
         Size: [],
@@ -67,12 +69,19 @@ const StorePage = ({ filters }) => {
             })
         }
     }
-    
-    const addToCart =  (item) => {
-        item.quantity = 1
-        localStorage.setItem('cart', JSON.stringify([...storage, item]))
-        setStorage(JSON.parse(localStorage.getItem('cart')))
-
+/////сделал
+    const addToCart = (product) => {
+        const productExist = cart.find(item => item._id === product._id)
+        console.log(productExist);
+        if (productExist) {
+            const result = cart.map(item => item._id === product._id ? { ...productExist, quantity: productExist.quantity + 1 } : item)
+            localStorage.setItem('cart', JSON.stringify(result))
+            setCart(JSON.parse(localStorage.getItem('cart')))
+        } else {
+            const result = [...cart, { ...product, quantity: 1 }]
+            localStorage.setItem('cart', JSON.stringify(result))
+            setCart(JSON.parse(localStorage.getItem('cart')))
+        }
     }
 
 
@@ -121,7 +130,7 @@ const StorePage = ({ filters }) => {
                                     price={item.price}
                                     path={item._id}
                                     addToCart={() => addToCart(item)}
-                                    text = {'Add to cart'}
+                                    text={'Add to cart'}
                                 />
                             ))
                         }

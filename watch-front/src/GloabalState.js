@@ -7,7 +7,8 @@ export const GlobalState = createContext()
 export const DataProvider = ({children}) => {
 
     const [products, setProducts] = React.useState([])
-    const [cart, setCart] = React.useState([])
+    const [cart, setCart] = React.useState(JSON.parse(localStorage.getItem('cart')) || [])
+    // const [cart, setCart] = React.useState([])
 
 
     React.useEffect(() => {

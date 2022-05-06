@@ -14,29 +14,43 @@ const Cart = () => {
         result ? setCart(JSON.parse(result)) : setCart([])
     }, [])
 
-    const deleteProduct = (id) => {
-        const filtered = cart.filter(item => item._id !== id)
-        const newStorage = localStorage.setItem('cart', JSON.stringify(filtered))
+
+    const deleteProductFromCart = (id) => {
+        const deletedProduct = cart.filter(item => item._id !== id)
+        const newStorage = localStorage.setItem('cart', JSON.stringify(deletedProduct))
         setCart(JSON.parse(localStorage.getItem('cart')))
     }
 
-    const addProduct = (id) => {
-        const currentQuantity = cart.find(item => item._id === id)
-        currentQuantity.quantity += 1
-        const result = cart.map(item => item._id === currentQuantity.id ? currentQuantity : item)  //Замена текущео элемента на новый с количеством
-        const newStorage = localStorage.setItem('cart', JSON.stringify(result))
+    const productPlus = (id) => {
+        const currentProduct = cart.find(item => item._id === id)
+        // currentQuantity.quantity += 1
+        // const result = cart.map(item => item._id === currentQuantity.id ? currentQuantity : item) 
+        // const newStorage = localStorage.setItem('cart', JSON.stringify(result))
+        // setCart(JSON.parse(localStorage.getItem('cart')))
+        const result = cart.map(item => item._id === id ? { ...currentProduct, quantity: currentProduct.quantity + 1 } : item)
+        localStorage.setItem('cart', JSON.stringify(result))
         setCart(JSON.parse(localStorage.getItem('cart')))
     }
 
-    const removeProduct = (id) => {
-        const currentQuantity = cart.find(item => item._id === id)
-        currentQuantity.quantity -= 1
-        const result = cart.map(item => item._id === currentQuantity.id ? currentQuantity : item)  //Замена текущео элемента на новый с количеством
-        const newStorage = localStorage.setItem('cart', JSON.stringify(result))
-        setCart(JSON.parse(localStorage.getItem('cart')))
-        if(currentQuantity.quantity === 0) {
-            const zeroQuantity = cart.filter(item => item._id !== id)
-            const newStorage = localStorage.setItem('cart', JSON.stringify(zeroQuantity))
+    const productMinus = (id) => {
+        // const currentQuantity = cart.find(item => item._id === id)
+        // currentQuantity.quantity -= 1
+        // const result = cart.map(item => item._id === currentQuantity.id ? currentQuantity : item)  //Замена текущео элемента на новый с количеством
+        // const newStorage = localStorage.setItem('cart', JSON.stringify(result))
+        // setCart(JSON.parse(localStorage.getItem('cart')))
+        // if (currentQuantity.quantity === 0) {
+        //     const zeroQuantity = cart.filter(item => item._id !== id)
+        //     const newStorage = localStorage.setItem('cart', JSON.stringify(zeroQuantity))
+        //     setCart(JSON.parse(localStorage.getItem('cart')))
+        // }
+        const currentProduct = cart.find(item => item._id === id)
+        if (currentProduct.quantity === 1) {
+            const deletedProduct = cart.filter(item => item._id !== id)
+            localStorage.setItem('cart', JSON.stringify(deletedProduct))
+            setCart(JSON.parse(localStorage.getItem('cart')))
+        } else {
+            const result = cart.map(item => item._id === id ? { ...currentProduct, quantity: currentProduct.quantity - 1 } : item)
+            localStorage.setItem('cart', JSON.stringify(result))
             setCart(JSON.parse(localStorage.getItem('cart')))
         }
     }
@@ -65,10 +79,10 @@ const Cart = () => {
                                     color={item.filter.Color}
                                     size={item.filter.Size}
                                     price={item.price}
-                                    quantity = {item.quantity}
-                                    onClick={() => deleteProduct(item._id)}
-                                    addProduct={() => addProduct(item._id)}
-                                    removeProduct={() => removeProduct(item._id)}
+                                    quantity={item.quantity}
+                                    onClick={() => deleteProductFromCart(item._id)}
+                                    addProduct={() => productPlus(item._id)}
+                                    removeProduct={() => productMinus(item._id)}
                                 />)
                             : <h4 className={styles.cartStatus}> Your cart is empty </h4>
                     }
