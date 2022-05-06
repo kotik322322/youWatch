@@ -10,6 +10,7 @@ import StorePage from '../StorePage/StorePage';
 import MyAccount from '../MyAccount/MyAccount';
 import CardInfo from '../CardInfo/CardInfo'
 
+
 const MainPage = ({slides, filters}) => {
 
    

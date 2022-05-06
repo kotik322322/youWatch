@@ -20,6 +20,7 @@ export const DataProvider = ({children}) => {
     }, [])
 
 
+
     const state = {
         products : [products, setProducts],
         cart : [cart, setCart]

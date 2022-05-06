@@ -5,7 +5,7 @@ import Timer from '../Timer/Timer'
 import { useNavigate, useParams } from "react-router-dom"
 import axios from 'axios'
 import Loader from "../Loader/Loader"
-import {GlobalState} from "../../GloabalState"
+import { GlobalState } from "../../GloabalState"
 
 
 
@@ -14,19 +14,19 @@ const CardInfo = () => {
     const state = React.useContext(GlobalState)
 
     const [cart, setCart] = state.cart
-    const [products] = state.products
     console.log(cart);
+    const [products] = state.products
 
     const [isLoading, setIsLoading] = React.useState(true)
     const [info, setInfo] = React.useState({
-        description : '',
-        imageUrl : [],
-        name : '',
-        price : '',
-        productColors : [],
-        size : [],
-        warranty : ''
-    }) 
+        description: '',
+        imageUrl: [],
+        name: '',
+        price: '',
+        productColors: [],
+        size: [],
+        warranty: ''
+    })
     const [tab, setTab] = React.useState(0)
 
     React.useEffect(() => {
@@ -34,28 +34,42 @@ const CardInfo = () => {
             const { data } = await axios.get(`http://localhost:9000/store/${_id}`)
             const [{ description, imageUrl, name, price, productColors, size, warranty }] = data
             setInfo({
-                description : description,
-                imageUrl : imageUrl,
-                name : name,
-                price : price,
-                productColors : productColors, 
-                size : size,
-                warranty : warranty
+                description: description,
+                imageUrl: imageUrl,
+                name: name,
+                price: price,
+                productColors: productColors,
+                size: size,
+                warranty: warranty
             })
             setIsLoading(false)
         }
         getCardInfo()
     }, [])
 
-    const addProduct = () => {
-        const currentProduct = products.find(item => {
-            return item._id === _id
-        });
-        currentProduct.quantity = 1
-        const newCart = [...cart, currentProduct]
-        const newStorage = localStorage.setItem('cart', JSON.stringify(newCart))
+    React.useEffect(() => {
         setCart(JSON.parse(localStorage.getItem('cart')))
-        
+    }, [])
+
+    const addProduct = () => {
+        const productExist = cart.find(item => item._id === _id)
+        if (productExist) {
+            const result = cart.map(item => item._id === _id ? { ...productExist, quantity: productExist.quantity + 1 } : item)
+            localStorage.setItem('cart', JSON.stringify(result))
+            setCart(JSON.parse(localStorage.getItem('cart')))
+            console.log('tyt');
+        } else {
+            const currentProduct = products.find(item => {
+                if(item._id === _id) {
+                    return item
+                }
+            })
+            const result = [...cart, { ...currentProduct, quantity: 1 }]
+            localStorage.setItem('cart', JSON.stringify(result))
+            setCart(JSON.parse(localStorage.getItem('cart')))
+            console.log('tyt');
+        }
+
     }
 
 
@@ -64,9 +78,10 @@ const CardInfo = () => {
 
     return (
 
+  
         <div className={styles.cardInfo}>
 
-            {isLoading ? <Loader/> : <div className={styles.cardInfoWrapper}>
+            {isLoading ? <Loader /> : <div className={styles.cardInfoWrapper}>
                 <div className={styles.cardInfoInner}>
                     <div className={styles.cardInfoSlider}>
 

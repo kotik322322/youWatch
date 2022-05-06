@@ -10,7 +10,6 @@ const StorePage = ({ filters }) => {
 
     const [items, setItems] = React.useState([])
     const [url, setUrl] = React.useState('')
-    // const [storage, setStorage] = React.useState(JSON.parse(localStorage.getItem('cart')) || [])
     const [cart, setCart] = React.useState(JSON.parse(localStorage.getItem('cart')) || [])
 
     const [filterList, setFilterList] = React.useState({
@@ -69,10 +68,9 @@ const StorePage = ({ filters }) => {
             })
         }
     }
-/////сделал
+
     const addToCart = (product) => {
         const productExist = cart.find(item => item._id === product._id)
-        console.log(productExist);
         if (productExist) {
             const result = cart.map(item => item._id === product._id ? { ...productExist, quantity: productExist.quantity + 1 } : item)
             localStorage.setItem('cart', JSON.stringify(result))

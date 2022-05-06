@@ -23,26 +23,12 @@ const Cart = () => {
 
     const productPlus = (id) => {
         const currentProduct = cart.find(item => item._id === id)
-        // currentQuantity.quantity += 1
-        // const result = cart.map(item => item._id === currentQuantity.id ? currentQuantity : item) 
-        // const newStorage = localStorage.setItem('cart', JSON.stringify(result))
-        // setCart(JSON.parse(localStorage.getItem('cart')))
         const result = cart.map(item => item._id === id ? { ...currentProduct, quantity: currentProduct.quantity + 1 } : item)
         localStorage.setItem('cart', JSON.stringify(result))
         setCart(JSON.parse(localStorage.getItem('cart')))
     }
 
     const productMinus = (id) => {
-        // const currentQuantity = cart.find(item => item._id === id)
-        // currentQuantity.quantity -= 1
-        // const result = cart.map(item => item._id === currentQuantity.id ? currentQuantity : item)  //Замена текущео элемента на новый с количеством
-        // const newStorage = localStorage.setItem('cart', JSON.stringify(result))
-        // setCart(JSON.parse(localStorage.getItem('cart')))
-        // if (currentQuantity.quantity === 0) {
-        //     const zeroQuantity = cart.filter(item => item._id !== id)
-        //     const newStorage = localStorage.setItem('cart', JSON.stringify(zeroQuantity))
-        //     setCart(JSON.parse(localStorage.getItem('cart')))
-        // }
         const currentProduct = cart.find(item => item._id === id)
         if (currentProduct.quantity === 1) {
             const deletedProduct = cart.filter(item => item._id !== id)
