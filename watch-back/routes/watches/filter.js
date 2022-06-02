@@ -6,6 +6,7 @@ const filter = (app) => {
             const query = req.query
             const result = await watchesModel.find(query)
 
+
             res.send(result)
         } catch (error) {
             res.send({ message: error, error })
