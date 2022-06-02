@@ -44,7 +44,7 @@ const Card = ({ imageUrl, name, price, _id, path, addToCart, text }) => {
       </Link>
 
       <p className={styles.cardPrice}>
-        {price}
+       $ {price}
       </p>
 
 
@@ -58,4 +58,4 @@ const Card = ({ imageUrl, name, price, _id, path, addToCart, text }) => {
   )
 }
 
-export default Card
+export default Card;

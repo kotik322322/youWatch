@@ -1,10 +1,12 @@
 .cardInfo {
   width: 1200px;
   margin: 0 auto 100px;
+  position: relative;
   &Inner {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    margin-top: 50px;
   }
   &About {
     display: flex;
@@ -70,7 +72,6 @@
   }
   &Colors {
     display: flex;
-    // justify-content: center;
     align-items: center;
     width: 90px;
     img {
@@ -133,10 +134,23 @@
   }
 }
 
+
+
+
 .goBack {
   position: fixed;
+  top: 160px;
+  left: 50px;
   cursor: pointer;
-  background: none;
-  
-  // margin-left: auto;
+  background: #3bb2f798;
+  border-radius: 8px;
+  padding: 15px;
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: 0.8px;
+  color: white;
+  border: none;
+  &:hover {  
+    background: #3bb1f7ed;
+  }
 }

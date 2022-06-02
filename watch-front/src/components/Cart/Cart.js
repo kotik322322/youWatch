@@ -1,18 +1,30 @@
 import React, { useContext } from 'react';
 import styles from '../Cart/Cart.module.scss';
 import Button from '../Button/Button';
+import Modal from '../Modal/Modal';
 import { GlobalState } from "../../GloabalState"
 import CartItem from '../CartItem/CartItem';
+
 
 
 const Cart = () => {
     const state = useContext(GlobalState)
     const [cart, setCart] = state.cart
 
+    const [ openModal, setOpenModal ] = React.useState(false);
+    const [priceCount, setPriceCount] = React.useState(0)
+
     React.useEffect(() => {
         const result = localStorage.getItem('cart')
         result ? setCart(JSON.parse(result)) : setCart([])
     }, [])
+
+    React.useEffect(() => {
+        const count = []
+        const setCount = cart.map(item => count.push(item.price * item.quantity) )
+        const result = count.reduce((acc, value) => acc + value, 0 )
+        setPriceCount(result)
+    }, [priceCount])
 
 
     const deleteProductFromCart = (id) => {
@@ -41,13 +53,17 @@ const Cart = () => {
         }
     }
 
-    return (
+    
 
+    return (
+    
         <div className={styles.cart}>
+
+            { openModal && <Modal closeModal={setOpenModal} /> }
+
             <div className={styles.cartWrapper}>
 
                 <h2 className={styles.cartTitle}> Cart </h2>
-                {/* <h4 className={styles.cartStatus}> Your cart is empty </h4> */}
 
                 <div className={styles.cartInner}>
                     <div className={styles.cartInnerText}>
@@ -69,28 +85,24 @@ const Cart = () => {
                                     onClick={() => deleteProductFromCart(item._id)}
                                     addProduct={() => productPlus(item._id)}
                                     removeProduct={() => productMinus(item._id)}
-                                />)
+                            />)
                             : <h4 className={styles.cartStatus}> Your cart is empty </h4>
                     }
-
-
 
 
                     <div className={styles.cartFooter}>
 
                         <div className={styles.cartFooterTotal}>
                             <p> <span>Subtotal</span> </p>
-                            <p> $ 1080 </p>
+                            <p> $ {priceCount} </p>
                         </div>
 
                         <Button
-                            text={'Checkout'}
-
+                            text={'Buy'}
+                            onClick={ () => setOpenModal(true)}
                         />
 
                     </div>
-
-
 
                 </div>
 
