@@ -117,7 +117,9 @@ const StorePage = ({ filters }) => {
                     </div>
 
                     <div className={styles.storeRight}>
-                        {items.length === 0 && <p style={{ textAlign: "center", fontWeight: "500", fontSize: "25px" }}>No products found for the corresponding categories</p>}
+                        {items.length === 0 && <p style={{ textAlign: "center", fontWeight: "500", fontSize: "25px" }}>
+                            No products found for the corresponding categories
+                            </p>}
 
                         {
                             items.map((item, _id) => (

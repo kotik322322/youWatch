@@ -12,7 +12,7 @@ const Card = ({ imageUrl, name, price, _id, path, addToCart, text }) => {
 
   return (
     <div key={_id} className={styles.card}>
-      <img className={styles.cardFavorite} src={favorite} alt="favorite" />
+      <img className={styles.cardFavorite} src={favorite} alt="favorite_svg" />
 
       <Link
         style={{ color: "inherit" }}
@@ -31,7 +31,7 @@ const Card = ({ imageUrl, name, price, _id, path, addToCart, text }) => {
       </Link>
 
       <p className={styles.cardPrice}>
-        {price}
+       $ {price}
       </p>
 
 
@@ -45,4 +45,4 @@ const Card = ({ imageUrl, name, price, _id, path, addToCart, text }) => {
   )
 }
 
-export default Card
+export default Card;

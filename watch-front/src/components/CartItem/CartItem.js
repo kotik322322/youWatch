@@ -10,7 +10,9 @@ const CartItem = ({imageUrl, name, color, size, price, onClick, addProduct, remo
             <img className={styles.cartInfoPic} src={imageUrl} alt="product photo" />
 
             <div className={styles.cartInfoText}>
-                <p className={styles.cartInfoName}>{name}</p>
+                <p className={styles.cartInfoName}>{name.length > 70 ?
+            `${name.substring(0, 70)}...` : name
+          }</p>
                 <p className={styles.cartInfoOption}> <span>Color: </span> {color}</p>
                 <p className={styles.cartInfoOption}> <span>Size:</span> {size} mm</p>
             </div>

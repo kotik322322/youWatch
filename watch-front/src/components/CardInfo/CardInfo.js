@@ -74,22 +74,27 @@ const CardInfo = () => {
 
 
     const navigate = useNavigate()
-    const goBack = () => navigate(-1)
+    const goBack = () => {
+        navigate("/store", { replace: true })
+    }
 
     return (
 
   
         <div className={styles.cardInfo}>
 
-            {isLoading ? <Loader /> : <div className={styles.cardInfoWrapper}>
+            <button className={styles.goBack} onClick={goBack}> &#10094; Back</button>
+
+
+            {isLoading ? <Loader /> : 
+            <div className={styles.cardInfoWrapper}>
                 <div className={styles.cardInfoInner}>
                     <div className={styles.cardInfoSlider}>
 
-                        <button className={styles.goBack} onClick={goBack}>Go Back</button>
-
+                    
                         <div className={styles.slider}>
                             <div className={styles.sliderWrapper}>
-                                <img className={styles.sliderImg} src={info.imageUrl[tab]} alt="" />
+                                <img className={styles.sliderImg} src={info.imageUrl[tab]} alt="imageUrl" />
                             </div>
 
                             <div className={styles.sliderBottom}>
@@ -99,8 +104,8 @@ const CardInfo = () => {
                                         <div key={index} className={styles.sliderBottomWrapper}>
                                             <img
                                                 className={styles.sliderBottomImg}
-                                                src={slide} alt=""
-                                                onClick={() => setTab(index)}
+                                                src={slide} alt="slide_images"
+                                                onClick={ () => setTab(index) }
                                             />
                                         </div>
 
@@ -123,7 +128,7 @@ const CardInfo = () => {
                                 </div>
 
                                 <div className={styles.cardInfoPrice}>
-                                    <p>{info.price}</p>
+                                    <p> $ {info.price}</p>
                                 </div>
                                 <Button onClick={addProduct} text={'Add to cart'} />
                             </div>
