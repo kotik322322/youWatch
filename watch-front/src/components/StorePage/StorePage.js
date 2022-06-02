@@ -2,21 +2,22 @@ import React from 'react';
 import styles from '../StorePage/StorePage.module.scss';
 import Card from '../Card/Card'
 import axios from 'axios';
-
+import { GlobalState } from '../../GloabalState'
 
 
 const StorePage = ({ filters }) => {
-
+    const state = React.useContext(GlobalState)
 
     const [items, setItems] = React.useState([])
     const [url, setUrl] = React.useState('')
-    const [cart, setCart] = React.useState(JSON.parse(localStorage.getItem('cart')) || [])
-
+    const [cart, setCart] = state.cart
+    const [favorite, setFavorite] = state.favorite
     const [filterList, setFilterList] = React.useState({
         Series: [],
         Size: [],
         Color: []
     })
+
 
     React.useEffect(() => {
         const getWatches = async () => {
@@ -82,6 +83,15 @@ const StorePage = ({ filters }) => {
         }
     }
 
+    // const handleFavorite = (product) => {
+    //     const inFavorite = favorite.find(item => item._id === product._id)
+    //     if (!inFavorite) {
+    //         const result = [...favorite, { ...product, atFavorite: true }]
+    //         localStorage.setItem('favorite', JSON.stringify(result))
+    //         setFavorite(JSON.parse(localStorage.getItem('favorite')))
+    //     }
+    // }
+
 
     return (
         <div className={styles.store}>
@@ -128,6 +138,8 @@ const StorePage = ({ filters }) => {
                                     price={item.price}
                                     path={item._id}
                                     addToCart={() => addToCart(item)}
+                                    _id = {item._id}
+                                    // onFavorite={() => handleFavorite(item)}
                                     text={'Add to cart'}
                                 />
                             ))

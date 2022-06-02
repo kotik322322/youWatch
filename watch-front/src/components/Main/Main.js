@@ -6,11 +6,11 @@ import 'swiper/css';
 import "swiper/css/effect-fade";
 import 'swiper/scss/pagination';
 import logoSE from '../../assets/main/apple-watch-series-SE.png'
-// import picSE from '../../assets/main/appleWatchSE1.png'
-// import logoSiries6 from '../../assets/main/apple-watch-series-6.png'
-// import picSiries6 from '../../assets/main/apple_watch_siries_6.png'
-// import logoSiries7 from '../../assets/main/apple-watch-series-7.png'
-// import picSiries7 from '../../assets/main/apple_watch_siries_7.png'
+import picSE from '../../assets/main/appleWatchSE1.png'
+import logoSiries6 from '../../assets/main/apple-watch-series-6.png'
+import picSiries6 from '../../assets/main/apple_watch_siries_6.png'
+import logoSiries7 from '../../assets/main/apple-watch-series-7.png'
+import picSiries7 from '../../assets/main/apple_watch_siries_7.png'
 // import next from '../../assets/next-arrow.svg'
 // import prev from '../../assets/prev-arrow.svg'
 import {FaArrowLeft} from "react-icons/fa"
@@ -92,7 +92,7 @@ const Main = ({slides}) => {
                 </div>
 
                         <div className={styles.watchInfoImg}>
-                          {/* <img src={picSE} alt="se" />           /////////////////////////////// */}
+                          <img src={picSE} alt="se" />      
                         </div>
               </div>
 
@@ -103,7 +103,7 @@ const Main = ({slides}) => {
                 <div className={styles.watchInfoDescription}>
 
                     <div className={styles.watchInfoLogo}>
-                      {/* <img src={logoSiries6} alt="apple_watch_siries_6" />   ///////////////////////////////////// */}
+                      <img src={logoSiries6} alt="apple_watch_siries_6" />
                     </div>
 
                        <div className={styles.watchInfoSize}>

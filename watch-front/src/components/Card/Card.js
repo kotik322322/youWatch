@@ -1,18 +1,31 @@
 import React from 'react';
 import styles from '../Card/Card.module.scss';
-import favorite from '../../assets/card/favorite.svg'
 import Button from '../Button/Button';
 import { Link } from 'react-router-dom';
+// import favorite from '../../assets/card/favorite.svg'
+import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai'
 
 
 
 const Card = ({ imageUrl, name, price, _id, path, addToCart, text }) => {
 
+  const [atFavorite, setAtFavorite] = React.useState(false)
+
 
 
   return (
     <div key={_id} className={styles.card}>
-      <img className={styles.cardFavorite} src={favorite} alt="favorite" />
+
+
+      <div
+        className={styles.cardFavorite}>
+        {atFavorite === true
+          ? <AiFillHeart style={{ fontSize: '35px', cursor: 'pointer' }} />
+          : <AiOutlineHeart style={{ fontSize: '35px', cursor: 'pointer' }} />}
+      </div>
+
+
+
 
       <Link
         style={{ color: "inherit" }}

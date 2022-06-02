@@ -14,7 +14,7 @@ const CardInfo = () => {
     const state = React.useContext(GlobalState)
 
     const [cart, setCart] = state.cart
-    console.log(cart);
+
     const [products] = state.products
 
     const [isLoading, setIsLoading] = React.useState(true)
@@ -28,6 +28,7 @@ const CardInfo = () => {
         warranty: ''
     })
     const [tab, setTab] = React.useState(0)
+    // const [btnText, setBtnText] = React.useState('Add to cart')
 
     React.useEffect(() => {
         const getCardInfo = async () => {
@@ -47,9 +48,9 @@ const CardInfo = () => {
         getCardInfo()
     }, [])
 
-    React.useEffect(() => {
-        setCart(JSON.parse(localStorage.getItem('cart')))
-    }, [])
+    // React.useEffect(() => {
+    //     setCart(JSON.parse(localStorage.getItem('cart')))
+    // }, [])
 
     const addProduct = () => {
         const productExist = cart.find(item => item._id === _id)
@@ -69,6 +70,8 @@ const CardInfo = () => {
             setCart(JSON.parse(localStorage.getItem('cart')))
             console.log('tyt');
         }
+
+        // setBtnText("product in cart")
 
     }
 
@@ -123,9 +126,9 @@ const CardInfo = () => {
                                 </div>
 
                                 <div className={styles.cardInfoPrice}>
-                                    <p>{info.price}</p>
+                                    <p>$ {info.price}</p>
                                 </div>
-                                <Button onClick={addProduct} text={'Add to cart'} />
+                                <Button onClick={addProduct} text={"Add to cart"} />
                             </div>
 
                             <div className={styles.cardInfoRight}>
