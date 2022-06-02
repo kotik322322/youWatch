@@ -9,9 +9,10 @@ import favoriteImg from '../../assets/favorite/favoriteSolid.svg';
 
 
 const Favorite = ({ name, price, imageUrl }) => {
+
   const state = React.useContext(GlobalState)
   const [favorite, setFavorite] = state.favorite
-  
+    console.log(favorite);
 
 
 

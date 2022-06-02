@@ -14,6 +14,11 @@ export const DataProvider = ({children}) => {
     React.useEffect(() => {
         const getItems = async () => {
             const {data} = await axios.get("http://localhost:9000/watches")
+
+            // const resultData = data.map(item => {
+            //     item._id
+            // })
+
             setProducts(data)
         }
         getItems()

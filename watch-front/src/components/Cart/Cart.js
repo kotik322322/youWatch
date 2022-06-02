@@ -11,7 +11,7 @@ const Cart = () => {
     const state = useContext(GlobalState)
     const [cart, setCart] = state.cart
 
-    const [ openModal, setOpenModal ] = React.useState(false);
+    const [openModal, setOpenModal] = React.useState(false);
     const [priceCount, setPriceCount] = React.useState(0)
 
     React.useEffect(() => {
@@ -19,12 +19,11 @@ const Cart = () => {
         result ? setCart(JSON.parse(result)) : setCart([])
     }, [])
 
-    React.useEffect(() => {
-        const count = []
-        const setCount = cart.map(item => count.push(item.price * item.quantity) )
-        const result = count.reduce((acc, value) => acc + value, 0 )
-        setPriceCount(result)
-    }, [priceCount])
+
+    const cartPriceTotal = cart.reduce(
+        (acc, item) => acc + item.price * item.quantity,
+        0)
+
 
 
     const deleteProductFromCart = (id) => {
@@ -53,13 +52,13 @@ const Cart = () => {
         }
     }
 
-    
+
 
     return (
-    
+
         <div className={styles.cart}>
 
-            { openModal && <Modal closeModal={setOpenModal} /> }
+            {openModal && <Modal closeModal={setOpenModal} />}
 
             <div className={styles.cartWrapper}>
 
@@ -67,8 +66,12 @@ const Cart = () => {
 
                 <div className={styles.cartInner}>
                     <div className={styles.cartInnerText}>
-                        <p>Item</p>
-                        <p>Price</p>
+                        {cart.length === 0
+                            ? null
+                            : <>
+                                <p>Item</p>
+                                <p>Price</p>
+                            </>}
                     </div>
 
                     {
@@ -85,22 +88,28 @@ const Cart = () => {
                                     onClick={() => deleteProductFromCart(item._id)}
                                     addProduct={() => productPlus(item._id)}
                                     removeProduct={() => productMinus(item._id)}
-                            />)
+                                />)
                             : <h4 className={styles.cartStatus}> Your cart is empty </h4>
                     }
 
 
                     <div className={styles.cartFooter}>
 
-                        <div className={styles.cartFooterTotal}>
-                            <p> <span>Subtotal</span> </p>
-                            <p> $ {priceCount} </p>
-                        </div>
+                        {cart.length === 0
+                            ? null :
+                            <>
+                                <div className={styles.cartFooterTotal}>
+                                    <p> <span>Subtotal</span> </p>
+                                    <p> $ {cartPriceTotal} </p>
+                                </div>
+                                <Button
+                                    text={'Buy'}
+                                    onClick={() => setOpenModal(true)}
 
-                        <Button
-                            text={'Buy'}
-                            onClick={ () => setOpenModal(true)}
-                        />
+                                /></>
+                        }
+
+
 
                     </div>
 

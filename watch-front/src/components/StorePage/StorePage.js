@@ -22,6 +22,12 @@ const StorePage = ({ filters }) => {
     React.useEffect(() => {
         const getWatches = async () => {
             const { data } = await axios.get(`http://localhost:9000/watches-name${url}`)
+            const favoriteFromStorage = JSON.parse(localStorage.getItem("favorite"))
+            const resultData = favoriteFromStorage.map(item => {
+               const subRes =  data.filter(el => el._id === item._id ? el : item)
+            //    console.log(subRes);
+            })
+            // console.log(resultData);
             setItems(data)
         }
         getWatches()
@@ -83,14 +89,18 @@ const StorePage = ({ filters }) => {
         }
     }
 
-    // const handleFavorite = (product) => {
-    //     const inFavorite = favorite.find(item => item._id === product._id)
-    //     if (!inFavorite) {
-    //         const result = [...favorite, { ...product, atFavorite: true }]
-    //         localStorage.setItem('favorite', JSON.stringify(result))
-    //         setFavorite(JSON.parse(localStorage.getItem('favorite')))
-    //     }
-    // }
+    const toggleFavorite = (product) => {
+        const result = [...favorite, {
+            ...product,
+            atFavorite: true
+        }]
+        localStorage.setItem('favorite', JSON.stringify(result))
+        setFavorite((JSON.parse(localStorage.getItem('favorite'))))
+
+
+    }
+
+
 
 
     return (
@@ -129,19 +139,19 @@ const StorePage = ({ filters }) => {
                     <div className={styles.storeRight}>
                         {items.length === 0 && <p style={{ textAlign: "center", fontWeight: "500", fontSize: "25px" }}>
                             No products found for the corresponding categories
-                            </p>}
+                        </p>}
 
                         {
                             items.map((item, _id) => (
                                 <Card
                                     key={item._id}
+                                    _id={item._id}
+                                    path={item._id}
                                     name={item.name}
                                     imageUrl={item.imageUrl[0]}
                                     price={item.price}
-                                    path={item._id}
                                     addToCart={() => addToCart(item)}
-                                    _id = {item._id}
-                                    // onFavorite={() => handleFavorite(item)}
+                                    addToFavorite={() => toggleFavorite(item)}
                                     text={'Add to cart'}
                                 />
                             ))

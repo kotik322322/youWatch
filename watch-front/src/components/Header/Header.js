@@ -6,9 +6,16 @@ import { AiOutlineHeart } from 'react-icons/ai'
 import { BsPerson } from 'react-icons/bs'
 import { GrCart } from "react-icons/gr"
 import { GrSearch } from "react-icons/gr"
+import { GlobalState } from "../../GloabalState"
 
 
 const Header = ({ icons }) => {
+  const state = React.useContext(GlobalState)
+  const [cart, setCart] = state.cart
+
+  const cartCounter = cart.reduce(
+    (acc, item) => acc + item.quantity,
+    0)
 
   return (
     <header className={styles.header}>
@@ -41,15 +48,19 @@ const Header = ({ icons }) => {
         </div>
 
         <ul className={styles.headerPanel}>
-          <Link className={styles.headerIcons} to='/favorite'>
+          <Link className={styles.headerIconHeart} to='/favorite'>
             <AiOutlineHeart style={{ fontSize: "30px", color: "#222222" }} />
           </Link>
 
-          <Link className={styles.headerIcons} to='/login'>
+          <Link className={styles.headerIconPerson} to='/login'>
             <BsPerson style={{ fontSize: "33px", color: "#222222" }} />
           </Link>
 
-          <Link className={styles.headerIcons} to='/cart'>
+          <Link className={styles.headerIconCart} to='/cart'>
+            {cart.length === 0
+              ? null
+              : <span className={styles.headerIconCount}>{cartCounter}</span>
+            }
             <GrCart style={{ fontSize: "30px", color: "#222222" }} />
           </Link>
 
