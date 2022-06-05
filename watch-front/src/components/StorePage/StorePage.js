@@ -11,13 +11,11 @@ const StorePage = ({ filters }) => {
     const [items, setItems] = React.useState([])
     const [url, setUrl] = React.useState('')
     const [cart, setCart] = state.cart
-    const [favorite, setFavorite] = state.favorite
     const [filterList, setFilterList] = React.useState({
         Series: [],
         Size: [],
         Color: []
     })
-
 
     React.useEffect(() => {
         const getWatches = async () => {
@@ -92,24 +90,6 @@ const StorePage = ({ filters }) => {
         }
     }
 
-    const toggleFavorite = (product) => {
-
-        const productExist = favorite.find(item => item._id === product._id)
-        if (productExist) {
-            const result = favorite.filter(item => item._id !== product._id)
-
-            localStorage.setItem('favorite', JSON.stringify(result))
-            setFavorite(JSON.parse(localStorage.getItem('favorite')))
-        } else {
-            const result = [...favorite, { ...product, atFavorite: true }]
-            localStorage.setItem('favorite', JSON.stringify(result))
-            setFavorite(JSON.parse(localStorage.getItem('favorite')))
-        }
-
-    }
-
-
-
 
     return (
         <div className={styles.store}>
@@ -153,14 +133,10 @@ const StorePage = ({ filters }) => {
                             items.map((item, _id) => (
                                 <Card
                                     key={item._id}
+                                    item={item}
                                     _id={item._id}
                                     path={item._id}
-                                    name={item.name}
-                                    imageUrl={item.imageUrl[0]}
-                                    price={item.price}
                                     addToCart={() => addToCart(item)}
-                                    addToFavorite={() => toggleFavorite(item)}
-                                    atFavorite={item.atFavorite}
                                     text={'Add to cart'}
                                 />
                             ))
