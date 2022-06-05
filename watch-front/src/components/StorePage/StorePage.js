@@ -22,13 +22,16 @@ const StorePage = ({ filters }) => {
     React.useEffect(() => {
         const getWatches = async () => {
             const { data } = await axios.get(`http://localhost:9000/watches-name${url}`)
-            const favoriteFromStorage = JSON.parse(localStorage.getItem("favorite"))
-            const resultData = favoriteFromStorage.map(item => {
-               const subRes =  data.filter(el => el._id === item._id ? el : item)
-            //    console.log(subRes);
-            })
-            // console.log(resultData);
-            setItems(data)
+            if (localStorage.getItem("favorite")) {
+                const favoriteFromStorage = JSON.parse(localStorage.getItem("favorite"))
+
+                const resultData = data.map(item => {
+                    return favoriteFromStorage.find(({ _id }) => _id === item._id) || item
+                })
+                setItems(resultData)
+            } else {
+                setItems(data)
+            }
         }
         getWatches()
     }, [url])
@@ -90,13 +93,18 @@ const StorePage = ({ filters }) => {
     }
 
     const toggleFavorite = (product) => {
-        const result = [...favorite, {
-            ...product,
-            atFavorite: true
-        }]
-        localStorage.setItem('favorite', JSON.stringify(result))
-        setFavorite((JSON.parse(localStorage.getItem('favorite'))))
 
+        const productExist = favorite.find(item => item._id === product._id)
+        if (productExist) {
+            const result = favorite.filter(item => item._id !== product._id)
+
+            localStorage.setItem('favorite', JSON.stringify(result))
+            setFavorite(JSON.parse(localStorage.getItem('favorite')))
+        } else {
+            const result = [...favorite, { ...product, atFavorite: true }]
+            localStorage.setItem('favorite', JSON.stringify(result))
+            setFavorite(JSON.parse(localStorage.getItem('favorite')))
+        }
 
     }
 
@@ -152,6 +160,7 @@ const StorePage = ({ filters }) => {
                                     price={item.price}
                                     addToCart={() => addToCart(item)}
                                     addToFavorite={() => toggleFavorite(item)}
+                                    atFavorite={item.atFavorite}
                                     text={'Add to cart'}
                                 />
                             ))
