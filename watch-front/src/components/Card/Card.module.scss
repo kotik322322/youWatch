@@ -1,9 +1,6 @@
 .card {
   max-width: 260px;
-<<<<<<< HEAD
-=======
   max-height: 461px;
->>>>>>> d5a9026d8d52e69c749f5522b1631406129fdbd7
   background-color: #fff;
   text-align: center;
   padding: 10px 10px 20px;
@@ -13,14 +10,9 @@
 
   &Favorite {
     cursor: pointer;
-<<<<<<< HEAD
-    display: flex;
-    justify-content: end;
-=======
     top: 10px;
     right: 10px;  
     position: absolute;
->>>>>>> d5a9026d8d52e69c749f5522b1631406129fdbd7
   }
 
   &Img {
