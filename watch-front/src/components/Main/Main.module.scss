@@ -62,6 +62,7 @@
 
 .slider {
   position: relative;
+  height: calc(100vh - 112px);
 }
 .navButton {
   z-index: 1;

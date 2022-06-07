@@ -10,6 +10,7 @@ const StorePage = ({ filters }) => {
     const state = React.useContext(GlobalState)
 
     const [loading, setLoading] = React.useState(false)
+    const [messageProduct, setMessageProduct] = React.useState(false)
     const [items, setItems] = React.useState([])
     const [url, setUrl] = React.useState('')
     const [cart, setCart] = state.cart
@@ -25,7 +26,7 @@ const StorePage = ({ filters }) => {
             const { data } = await axios.get(`http://localhost:9000/watches-name${url}`)
             if (localStorage.getItem("favorite")) {
                 const favoriteFromStorage = JSON.parse(localStorage.getItem("favorite"))
-                
+
                 const resultData = data.map(item => {
                     return favoriteFromStorage.find(({ _id }) => _id === item._id) || item
                 })
@@ -33,6 +34,8 @@ const StorePage = ({ filters }) => {
             } else {
                 setItems(data)
             }
+            items.length === 0 && setMessageProduct(true)
+
             setLoading(false)
         }
         getWatches()
@@ -97,60 +100,59 @@ const StorePage = ({ filters }) => {
 
 
     return (
+
         <div className={styles.store}>
-            <h1 className={styles.storeTitle}> Choose your Apple Watch </h1>
-            <div className={styles.storeWrapper}>
-                <div className={styles.storeInner}>
-                    <div className={styles.storeLeft}>
-                        <div className={styles.storeFilter}>
-                            <h3 className={styles.storeLeftTitle}> Apple Watch </h3>
-                            {filtersKey.map((key, index) => {
-                                return (
-                                    <div key={index}>
-                                        <h4 className={styles.storeLeftFilterTitle}>{key}</h4>
-                                        {filters[key].map((item) => {
-                                            return (
-                                                <label key={item.id} className={styles.storeLeftLabel}>
-                                                    <input
-                                                        className={styles.storeLeftBox}
-                                                        type="checkbox"
-                                                        name={item.id}
-                                                        value={[key]}
-                                                        id={item.id}
-                                                        onChange={(e) => handleFilter(e, key)}
-                                                    />
-                                                    <span>{item.name}</span>
-                                                </label>
-                                            );
-                                        })}
-                                    </div>
-                                );
-                            })}
+                <h1 className={styles.storeTitle}> Choose your Apple Watch </h1>
+                <div className={styles.storeWrapper}>
+                    <div className={styles.storeInner}>
+                        <div className={styles.storeLeft}>
+                            <div className={styles.storeFilter}>
+                                <h3 className={styles.storeLeftTitle}> Apple Watch </h3>
+                                {filtersKey.map((key, index) => {
+                                    return (
+                                        <div key={index}>
+                                            <h4 className={styles.storeLeftFilterTitle}>{key}</h4>
+                                            {filters[key].map((item) => {
+                                                return (
+                                                    <label key={item.id} className={styles.storeLeftLabel}>
+                                                        <input
+                                                            className={styles.storeLeftBox}
+                                                            type="checkbox"
+                                                            name={item.id}
+                                                            value={[key]}
+                                                            id={item.id}
+                                                            onChange={(e) => handleFilter(e, key)}
+                                                        />
+                                                        <span>{item.name}</span>
+                                                    </label>
+                                                );
+                                            })}
+                                        </div>
+                                    );
+                                })}
+                            </div>
                         </div>
-                    </div>
 
-                    <div className={styles.storeRight}>
-                        {loading ? null :  items.length === 0 && <p style={{ padding: "100px", fontWeight: "500", fontSize: "28px", color: "#ff666689" }}>
-                            No products found for the corresponding categories
-                        </p>}
+                        <div className={styles.storeRight}>
+                            { loading ? <Loader/> :
+                                items.map((item, _id) => (
+                                    <Card
+                                        key={item._id}
+                                        item={item}
+                                        _id={item._id}
+                                        path={item._id}
+                                        addToCart={() => addToCart(item)}
+                                    />
+                                ))
+                            }
+                            {messageProduct && <p style={{ padding: "100px", fontWeight: "500", fontSize: "28px", color: "#ff666689" }}>
+                                No products found for the corresponding categories
+                            </p>}
+                        </div>
 
-                        {
-                            loading 
-                            ? <Loader /> 
-                            : items.map((item, _id) => (
-                                <Card
-                                    key={item._id}
-                                    item={item}
-                                    _id={item._id}
-                                    path={item._id}
-                                    addToCart={() => addToCart(item)}
-                                />
-                            ))
-                        }
                     </div>
                 </div>
             </div>
-        </div>
 
     )
 }
