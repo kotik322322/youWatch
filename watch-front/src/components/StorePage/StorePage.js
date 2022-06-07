@@ -125,7 +125,7 @@ const StorePage = ({ filters }) => {
                     </div>
 
                     <div className={styles.storeRight}>
-                        {items.length === 0 && <p style={{ textAlign: "center", fontWeight: "500", fontSize: "25px" }}>
+                        {items.length === 0 && <p style={{padding: "100px", fontWeight: "500", fontSize: "28px", color: "#ff666689"}}>
                             No products found for the corresponding categories
                         </p>}
 
