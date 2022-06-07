@@ -137,7 +137,6 @@ const StorePage = ({ filters }) => {
                                     _id={item._id}
                                     path={item._id}
                                     addToCart={() => addToCart(item)}
-                                    text={'Add to cart'}
                                 />
                             ))
                         }

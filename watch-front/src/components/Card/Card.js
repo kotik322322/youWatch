@@ -6,7 +6,7 @@ import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai'
 import { GlobalState } from '../../GloabalState';
 
 
-const Card = ({ _id, path, addToCart, text, item }) => {
+const Card = ({ _id, path, addToCart, item }) => {
   const state = React.useContext(GlobalState)
   const [favorite, setFavorite] = state.favorite
   const [atFavorite, setAtFavorite] = React.useState(item.atFavorite)
@@ -67,7 +67,7 @@ const Card = ({ _id, path, addToCart, text, item }) => {
 
 
       <Button
-        text={text}
+        text={"Add to cart"}
         onClick={addToCart}
       />
 
