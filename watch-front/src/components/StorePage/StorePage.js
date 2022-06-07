@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from '../StorePage/StorePage.module.scss';
 import Card from '../Card/Card'
+import Loader from "../Loader/Loader"
 import axios from 'axios';
 import { GlobalState } from '../../GloabalState'
 
@@ -8,6 +9,7 @@ import { GlobalState } from '../../GloabalState'
 const StorePage = ({ filters }) => {
     const state = React.useContext(GlobalState)
 
+    const [loading, setLoading] = React.useState(false)
     const [items, setItems] = React.useState([])
     const [url, setUrl] = React.useState('')
     const [cart, setCart] = state.cart
@@ -19,10 +21,11 @@ const StorePage = ({ filters }) => {
 
     React.useEffect(() => {
         const getWatches = async () => {
+            setLoading(true)
             const { data } = await axios.get(`http://localhost:9000/watches-name${url}`)
             if (localStorage.getItem("favorite")) {
                 const favoriteFromStorage = JSON.parse(localStorage.getItem("favorite"))
-
+                
                 const resultData = data.map(item => {
                     return favoriteFromStorage.find(({ _id }) => _id === item._id) || item
                 })
@@ -30,8 +33,10 @@ const StorePage = ({ filters }) => {
             } else {
                 setItems(data)
             }
+            setLoading(false)
         }
         getWatches()
+
     }, [url])
 
 
@@ -125,12 +130,14 @@ const StorePage = ({ filters }) => {
                     </div>
 
                     <div className={styles.storeRight}>
-                        {items.length === 0 && <p style={{padding: "100px", fontWeight: "500", fontSize: "28px", color: "#ff666689"}}>
+                        {loading ? null :  items.length === 0 && <p style={{ padding: "100px", fontWeight: "500", fontSize: "28px", color: "#ff666689" }}>
                             No products found for the corresponding categories
                         </p>}
 
                         {
-                            items.map((item, _id) => (
+                            loading 
+                            ? <Loader /> 
+                            : items.map((item, _id) => (
                                 <Card
                                     key={item._id}
                                     item={item}
