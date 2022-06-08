@@ -1,9 +1,11 @@
 .blog { 
     width: 100%;
+    min-height: 100vh;
     &Wrapper {  
+      
         max-width: 1200px;
         margin: 0 auto;
-        padding: 50px 0 150px;
+        padding: 80px 0 150px;
     }
 
     &Title {    
@@ -23,27 +25,70 @@
       }
     }
 
-    &Info { 
-        padding-top: 50px;
-      &Title { 
-        text-align: center;
-        font-weight: 600;
-        font-size: 24px;
-        line-height: 26px;
-        padding-bottom: 30px;
-      }
-      img { 
-          padding: 30px 0;
+    &Item { 
+      padding: 20px 60px 20px 0;
+      display: flex;
+      box-shadow: 0px 10px 15px 5px rgba(53, 53, 53, 0.37);
+      border-radius: 12px;
+      margin-bottom: 60px;
+      
+  }
 
-      }
-      p {  
-          font-size: 18px;
-          font-weight: 300;
-          line-height: 28px; 
-          padding-bottom: 20px;
-      }
-      span {    
-          font-weight: 600;
-      }
+    &Img {  
+      width: 100%;
+      max-width: 510px;
+      border-radius: 12px;
     }
+    &Right {  
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+    }
+    &Headline {  
+      font-size: 30px;
+      line-height: 32px;
+      font-weight: 600;
+    }
+    &Text { 
+      font-size: 18px;
+      line-height: 26px;
+    }
+    &Link {  
+      color: #007aff;
+      font-size: 21px;
+    }
+
+    &Info { 
+      &Title { 
+            text-align: center;
+            font-weight: 600;
+            font-size: 24px;
+            line-height: 26px;
+            padding-bottom: 30px;
+      }
+          h4 {  
+            font-weight: 600;
+            font-size: 24px;
+            line-height: 26px;
+            padding: 30px 0 30px;
+          }
+          img { 
+              padding: 30px 0;
+              width: 100%;
+              max-width: 1200px;
+    
+          }
+          p {  
+              font-size: 18px;
+              font-weight: 300;
+              line-height: 28px; 
+              padding-bottom: 20px;
+          }
+          span {    
+              font-weight: 600;
+          }
+    }
+    
 }
+
+
