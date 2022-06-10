@@ -7,19 +7,25 @@ const Footer = ({ icons }) => {
   return (
     <footer className={styles.footer}>
       <div className={styles.footerWrapper}>
+
+
         <div className={styles.footerContacts}>
           <p className={styles.footerContactsUs}> Contact us</p>
+          <div>
           <a href="tel:+380990220193">Tel +38 (099) 022-01-02</a>
           <a href="tel:+380992139898">Tel +38 (063) 213-98-98</a>
+          </div>
           <a className={styles.footerContactsMail} href="mailto:info@you-watch.com">info@you-watch.com</a>
           <p className={styles.footerContactsAddress}>400 Aldridge Rd, Birmingham B44 8BH, UK</p>
         </div>
+
 
         <div className={styles.footerServices}>
           <p>Services </p>
           <a href="https://support.apple.com/watch/repair/service" target="_blank">Watch repair</a>
           <a href="https://www.termsfeed.com/blog/sample-return-policy-ecommerce-stores/" target="_blank">Return policy</a>
           <a href="https://www.apple.com/shop/trade-in" target="_blank">Trade In</a>
+
         </div>
 
 
@@ -62,8 +68,12 @@ const Footer = ({ icons }) => {
               <img src={icons.paypal} alt="paypal" />
             </a>
           </div>
+ 
         </div>
+
       </div>
+
+          
     </footer>
   )
 }

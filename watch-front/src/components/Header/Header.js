@@ -2,9 +2,9 @@ import React from 'react'
 import styles from '../Header/Header.module.scss'
 import { Link } from 'react-router-dom'
 //React Icons
-import { AiOutlineHeart } from 'react-icons/ai'
-import { BsPerson } from 'react-icons/bs'
-import { GrCart } from "react-icons/gr"
+import { RiHeart2Line } from 'react-icons/ri'
+import { MdOutlinePersonOutline } from 'react-icons/md'
+import { HiOutlineShoppingBag } from "react-icons/hi"
 import { GrSearch } from "react-icons/gr"
 import { GlobalState } from "../../GloabalState"
 
@@ -49,11 +49,11 @@ const Header = ({ icons }) => {
 
         <ul className={styles.headerPanel}>
           <Link className={styles.headerIconHeart} to='/favorite'>
-            <AiOutlineHeart style={{ fontSize: "30px", color: "#222222" }} />
+            <RiHeart2Line style={{ fontSize: "30px", color: "#222222" }} />
           </Link>
 
           <Link className={styles.headerIconPerson} to='/login'>
-            <BsPerson style={{ fontSize: "33px", color: "#222222" }} />
+            <MdOutlinePersonOutline style={{ fontSize: "33px", color: "#222222" }} />
           </Link>
 
           <Link className={styles.headerIconCart} to='/cart'>
@@ -61,10 +61,8 @@ const Header = ({ icons }) => {
               ? null
               : <span className={styles.headerIconCount}>{cartCounter}</span>
             }
-            <GrCart style={{ fontSize: "30px", color: "#222222" }} />
+            <HiOutlineShoppingBag style={{ fontSize: "30px", color: "#222222" }} />
           </Link>
-
-
 
         </ul>
       </div>

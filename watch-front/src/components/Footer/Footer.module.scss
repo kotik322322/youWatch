@@ -1,17 +1,24 @@
 .footer {
-  // flex-shrink: 0;
   background-color: #323232;
   color: #fff;
   &Wrapper {
     display: flex;
     justify-content: space-around;
-    padding: 30px 10px 60px;
+    
+    
+    padding: 100px 10px 100px;
     margin: 0 auto;
     max-width: 1200px;
     width: 100%;
 
   }
+
+
   &Contacts {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
     a {
       color: #aaaaaa;
       margin-bottom: 5px;
@@ -19,27 +26,28 @@
         color: #70bfff;
       }
     }
-    &Mail {
-      padding-top: 15px;
-    }
     &Address {
       font-size: 12px;
       font-weight: 400;
       color: #aaaaaa;
-      padding: 15px 0;
     }
     &Us {
       
       font-size: 18px;
-      padding-bottom: 15px;
+      padding-bottom: 30px;
     } 
     
   }
+
+
   &Services {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     p{
       font-size: 18px;
       font-weight: 500;
-      padding-bottom: 20px;
+      padding-bottom: 30px;
     }
     a {
       color: #aaaaaa;
@@ -51,6 +59,8 @@
       }
     }
   }
+
+
   &Links {
     display: flex;
     flex-direction: column;
@@ -94,4 +104,6 @@
       }
     }
   }
+
+  
 }

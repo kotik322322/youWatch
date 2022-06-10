@@ -83,8 +83,8 @@ const Blog = () => {
                             <a className={styles.blogLink} href='#'> Learn more ⋙ </a>
                         </div>
                 </div>
-
-                {/* <div className={styles.blogInfo}>
+{/* 
+                <div className={styles.blogInfo}>
                 <h3 className={styles.blogInfoTitle}> What is the difference between Apple Watch Series 7, Series 6 and SE? </h3>
                     <img src={blogPic} alt="siries7_vs_siries6" />
                         <p> Traditionally, in September, Apple updates the lineup of its smartwatches. In 2021, the <span>Apple Watch Series 7</span> was introduced, which received an enlarged screen. And the predecessor, the <span>Apple Watch Series 6</span>, has disappeared from sale on the official website. However, this model will still be easy to find through authorized resellers.</p>
