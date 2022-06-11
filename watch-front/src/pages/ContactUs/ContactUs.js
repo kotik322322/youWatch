@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../ContactUs/ContactUs.module.scss'
+import styles from './ContactUs.module.scss'
 
 import { BiStore }  from "react-icons/bi";
 import { BsCreditCard2Back }  from "react-icons/bs";

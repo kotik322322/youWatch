@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from '../StorePage/StorePage.module.scss';
-import Card from '../Card/Card'
-import Loader from "../Loader/Loader"
+import Card from '../../components/Card/Card'
+import Loader from "../../components/Loader/Loader"
 import axios from 'axios';
 import { GlobalState } from '../../GloabalState'
 

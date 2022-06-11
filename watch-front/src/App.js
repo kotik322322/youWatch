@@ -1,10 +1,21 @@
 import React, { useState } from 'react';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route
+} from 'react-router-dom';
 import './App.css'
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
-import MainPage from './components/MainPage/MainPage';
-import { BrowserRouter } from 'react-router-dom';
 import axios from 'axios';
+import Main from './pages/Main/Main';
+import Cart from './pages/Cart/Cart';
+import Favorite from './pages/Favorite/Favorite';
+import ContactUs from "./pages/ContactUs/ContactUs"
+import Blog from './pages/Blog/Blog';
+import StorePage from './pages/StorePage/StorePage';
+import CardInfo from './pages/CardInfo/CardInfo';
+import MyAccount from './pages/MyAccount/MyAccount';
 
 
 
@@ -40,15 +51,31 @@ function App() {
 
 
   return (
-    <BrowserRouter>
+    <Router>
       <div className='App'>
         <Header
           icons={icons}
         />
-        <MainPage
-          slides={slides}
-          filters={filters}
-        />
+
+        <Routes>
+          <Route path='/' element={<Main slides={slides} />} />
+
+          <Route path='/cart' element={<Cart />} />
+
+          <Route path='/favorite' element={<Favorite />} />
+
+          <Route path='/contact_us' element={<ContactUs />} />
+
+          <Route path='/blog' element={<Blog />} />
+
+          <Route path='/store' element={<StorePage filters={filters} />} />
+
+          <Route path={`/store/:_id`} element={<CardInfo />} />
+
+          <Route path='/login' element={<MyAccount />} />
+
+
+        </Routes>
 
         <Footer
           icons={icons}
@@ -56,41 +83,9 @@ function App() {
       </div>
 
 
-    </BrowserRouter>
+    </Router>
 
   );
 }
 
 export default App;
-
-
-// [
-//   {
-//     "icons": {
-//       "logo": "https://res.cloudinary.com/drw1dnak7/image/upload/v1651072237/icons/logo_fifsmu.svg",
-//       "facebook": "https://res.cloudinary.com/drw1dnak7/image/upload/v1651072191/icons/facebook_pmkxcd.svg",
-//       "visa": "https://res.cloudinary.com/drw1dnak7/image/upload/v1651072073/icons/visa_j5g1sr.svg",
-//       "viber": "https://res.cloudinary.com/drw1dnak7/image/upload/v1651072073/icons/viber_qrbsdy.svg",
-//       "twitter": "https://res.cloudinary.com/drw1dnak7/image/upload/v1651072071/icons/twitter_bwlqjy.svg",
-//       "youtube": "https://res.cloudinary.com/drw1dnak7/image/upload/v1651072071/icons/youtube_g525ip.svg",
-//       "telegram": "https://res.cloudinary.com/drw1dnak7/image/upload/v1651072071/icons/telegram_eulrkn.svg",
-//       "mastercard": "https://res.cloudinary.com/drw1dnak7/image/upload/v1651072071/icons/mastercard_ltf7km.svg",
-//       "paypal": "https://res.cloudinary.com/drw1dnak7/image/upload/v1651072071/icons/paypal_tj13c9.svg",
-//       "instagram": "https://res.cloudinary.com/drw1dnak7/image/upload/v1651072071/icons/instagram_odd3ck.svg"
-//     },
-//     "slides" : [
-//       "https://res.cloudinary.com/drw1dnak7/image/upload/v1651142311/ImgDataBase/slider/1_fo88mr.jpg",
-//       "https://res.cloudinary.com/drw1dnak7/image/upload/v1651142311/ImgDataBase/slider/2_ynbxxh.jpg",
-//       "https://res.cloudinary.com/drw1dnak7/image/upload/v1651142311/ImgDataBase/slider/3_geepko.png",
-//       "https://res.cloudinary.com/drw1dnak7/image/upload/v1651142310/ImgDataBase/slider/4_u3nq9v.jpg",
-//       "https://res.cloudinary.com/drw1dnak7/image/upload/v1651142311/ImgDataBase/slider/5_ixu8gl.png",
-//       "https://res.cloudinary.com/drw1dnak7/image/upload/v1651142310/ImgDataBase/slider/6_of71ep.jpg",
-//       "https://res.cloudinary.com/drw1dnak7/image/upload/v1651142310/ImgDataBase/slider/7_hvqjcg.jpg",
-//       "https://res.cloudinary.com/drw1dnak7/image/upload/v1651142310/ImgDataBase/slider/8_if8vdu.jpg",
-//       "https://res.cloudinary.com/drw1dnak7/image/upload/v1651142311/ImgDataBase/slider/9_shiroc.jpg",
-//       "https://res.cloudinary.com/drw1dnak7/image/upload/v1651142311/ImgDataBase/slider/10_m7wkek.jpg",
-//       "https://res.cloudinary.com/drw1dnak7/image/upload/v1651142311/ImgDataBase/slider/11_lssvj2.png"
-//     ]
-
-//   }
-// ]

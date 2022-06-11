@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../MyAccount/MyAccount.module.scss';
+import styles from './MyAccount.module.scss';
 
 import logOut from '../../assets/account/logout.svg'
 

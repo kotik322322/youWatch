@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../Main/Main.module.scss';
+import styles from './Main.module.scss';
 import { Autoplay, EffectFade, Pagination, Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';

@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../Blog/Blog.module.scss';
+import styles from './Blog.module.scss';
 
 import blogPic from '../../assets/blog/theme-first/watch_7_vs_watch_6.jpg';
 import blogImg from '../../assets/blog/theme-first/watch_img.jpg';

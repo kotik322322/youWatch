@@ -1,10 +1,10 @@
 import React from 'react'
-import styles from "../CardInfo/CardInfo.module.scss"
-import Button from '../Button/Button'
-import Timer from '../Timer/Timer'
+import styles from "./CardInfo.module.scss"
+import Button from '../../components/Button/Button'
+import Timer from '../../components/Timer/Timer'
 import { useNavigate, useParams } from "react-router-dom"
 import axios from 'axios'
-import Loader from "../Loader/Loader"
+import Loader from "../../components/Loader/Loader"
 import { GlobalState } from "../../GloabalState"
 
 
