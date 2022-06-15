@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Blog.module.scss';
 import axios from "axios"
+import {Link} from "react-router-dom"
 
 
 
@@ -29,7 +30,7 @@ const Blog = () => {
                         <div className={styles.blogRight}>
                             <h4 className={styles.blogHeadline}> {item.title} </h4>
                             <p className={styles.blogText}>{item.text}</p>
-                            <a className={styles.blogLink} href='#'>Learn more ⋙ </a>
+                            <Link className={styles.blogLink} to={item._id}>Learn more ⋙ </Link>
                         </div>
 
                     </div>

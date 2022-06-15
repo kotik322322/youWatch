@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from "./BlogInfo.module.scss"
 import axios from "axios"
-import { useParams } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 
 const BlogInfo = () => {
   const { _id } = useParams()
@@ -11,17 +11,22 @@ const BlogInfo = () => {
   console.log(inform);
   React.useEffect(() => {
     const getBlogItems = async () => {
-      const { data : {info} } = await axios.get(`http://localhost:9000/blog/${_id}`)
+      const { data: { info } } = await axios.get(`http://localhost:9000/blog/${_id}`)
 
       setInform(info)
     }
     getBlogItems()
   }, [])
 
+  const navigate = useNavigate()
+  const goBack = () => {
+      navigate("/blog", { replace: true })
+  }
 
   return (
     <div className={styles.blog}>
-        <div className={styles.blogWrapper} dangerouslySetInnerHTML={{__html: inform}}></div>
+      <button className="goBack" onClick={goBack}> &#10094; Back</button>
+      <div className={styles.blogWrapper} dangerouslySetInnerHTML={{ __html: inform }}></div>
     </div>
   )
 }
