@@ -16,6 +16,7 @@ import Blog from './pages/Blog/Blog';
 import StorePage from './pages/StorePage/StorePage';
 import CardInfo from './pages/CardInfo/CardInfo';
 import MyAccount from './pages/MyAccount/MyAccount';
+import BlogInfo from './pages/BlogInfo/BlogInfo';
 
 
 
@@ -73,6 +74,8 @@ function App() {
           <Route path={`/store/:_id`} element={<CardInfo />} />
 
           <Route path='/login' element={<MyAccount />} />
+
+          <Route path='/blog/:_id' element={<BlogInfo />} />
 
 
         </Routes>
