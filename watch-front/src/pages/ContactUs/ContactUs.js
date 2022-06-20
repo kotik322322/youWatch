@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './ContactUs.module.scss'
 
-import { BiStore }  from "react-icons/bi";
+import { BsBuilding }  from "react-icons/bs";
 import { BsCreditCard2Back }  from "react-icons/bs";
 import { BsHeadphones }  from "react-icons/bs";
 import { MdOutlineChangeCircle }  from "react-icons/md";
@@ -23,11 +23,11 @@ const ContactUs = () => {
                         <div className={styles.contactBlock}>
                            <div className={styles.contactItem}>
                                 <div className={styles.contactItemTitle}>
-                                    <BiStore />
+                                    <BsBuilding />
                                     <h4>  Company: </h4>
                                 </div>
                                     <div className={styles.contactItemText}>
-                                        <p> Hardware store "You Watch" Co.</p>
+                                        <p> Watchware store "You Watch" Co.</p>
                                         <p> No. Court Registration System: 1000677866 </p>
                                         <p> VAT-ID: 567-27-85-107 </p>
                                     </div>

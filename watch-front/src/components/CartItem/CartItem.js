@@ -26,13 +26,13 @@ const CartItem = ({ imageUrl, name, color, size, price, onClick, addProduct, rem
             <div className={styles.cartInfoQuantity}>
                 <button
                     className={styles.cartInfoBtn}
-                    onClick={addProduct}
-                >+</button>
+                    onClick={removeProduct}
+                >-</button>
                 <p className={styles.cartInfoCount}> {quantity}</p>
                 <button
                     className={styles.cartInfoBtn}
-                    onClick={removeProduct}
-                >-</button>
+                    onClick={addProduct}
+                >+</button>
             </div>
 
 

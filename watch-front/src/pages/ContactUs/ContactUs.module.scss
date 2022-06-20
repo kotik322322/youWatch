@@ -23,7 +23,6 @@
       }
     }
 
-
     &Block {    
         display: flex;
         justify-content: space-around;
@@ -56,6 +55,9 @@
             a { 
                 color: rgba(243, 147, 91, 0.994);
                 font-weight: 500;
+                &:hover {   
+                    color: rgba(241, 113, 39, 0.994);
+                }
             }
         }
     }
@@ -76,7 +78,6 @@
         &Text { 
             font-size: 16px;
             line-height: 32px;
-            // text-align: center;
             span {  
                 font-weight: 700;
             }
@@ -86,8 +87,6 @@
             }
         }
     }   
-
-    
 }
 
     

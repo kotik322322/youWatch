@@ -60,7 +60,6 @@ const Modal = (props) => {
                                             className={styles.formInput}
                                             type={`text`}
                                             name={`userName`}
-                                            // placeholder={`Name`}
                                             maxLength={'20'}
                                             onChange={handleChange}
                                             onBlur={handleBlur}
@@ -75,7 +74,6 @@ const Modal = (props) => {
                                             className={styles.formInput}
                                             type={`text`}
                                             name={`userLastName`}
-                                            // placeholder={`Last Name`}
                                             maxLength={'40'}
                                             onChange={handleChange}
                                             onBlur={handleBlur}
@@ -124,7 +122,6 @@ const Modal = (props) => {
                                             className={styles.formInput}
                                             type={`text`}
                                             name={`city`}
-                                            // placeholder={`City`}
                                             maxLength={'150'}
                                             onChange={handleChange}
                                             onBlur={handleBlur}
@@ -139,7 +136,6 @@ const Modal = (props) => {
                                             className={styles.formInput}
                                             type={`text`}
                                             name={`state`}
-                                            // placeholder={`State/Province/Region`}
                                             maxLength={'300'}
                                             onChange={handleChange}
                                             onBlur={handleBlur}
@@ -154,7 +150,6 @@ const Modal = (props) => {
                                             className={styles.formInput}
                                             type={`text`}
                                             name={`zip`}
-                                            // placeholder={`ZIP Code`}
                                             maxLength={'20'}
                                             onChange={handleChange}
                                             onBlur={handleBlur}
@@ -170,7 +165,6 @@ const Modal = (props) => {
                                             className={styles.formInput}
                                             type={`text`}
                                             name={`address`}
-                                            // placeholder={`Street address`}
                                             maxLength={'300'}
                                             onChange={handleChange}
                                             onBlur={handleBlur}

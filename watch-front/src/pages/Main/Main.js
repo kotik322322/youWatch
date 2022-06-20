@@ -87,7 +87,7 @@ const Main = ({ slides }) => {
                 </div>
 
                 <p className={styles.watchInfoText}>
-                  Measure your blood oxygen level with a revolutionary sensor and app. Take an ECG anytime, anywhere. See your fitness metrics at a glance with the enhanced Always-On Retina display. With <span> Apple Watch Series 6 </span> on your wrist, a healthier, more active, more connected life is within reach.
+                Powerful features to help keep you connected, active, healthy, and safe. Advanced sensors to track all the ways you move and to measure your favorite workouts. And available cellular so you can go without your phone. <span>Apple Watch SE</span> is a lot of watch for a lot less than you expected.
                 </p>
               </div>
 
@@ -117,7 +117,7 @@ const Main = ({ slides }) => {
               </div>
 
               <div className={styles.watchInfoImg}>
-                {/* <img src={picSiries6} alt="picSiries6" />    //////////////// */}
+                <img src={picSiries6} alt="picSiries6" />    
               </div>
             </div>
 
@@ -126,7 +126,7 @@ const Main = ({ slides }) => {
               <div className={styles.watchInfoDescription}>
 
                 <div className={styles.watchInfoLogo}>
-                  {/* <img src={logoSiries7} alt="apple_watch_siries_7" />   /////// */}
+                  <img src={logoSiries7} alt="apple_watch_siries_7" />   
                 </div>
 
                 <div className={styles.watchInfoSize}>
@@ -135,12 +135,12 @@ const Main = ({ slides }) => {
                 </div>
 
                 <p className={styles.watchInfoText}>
-                  The larger display enhances the entire experience, making Apple Watch easier to use and read. Series 7 represents our biggest and brightest thinking. You don’t need to raise your wrist or touch the screen to see the time or other information and complications on your watch face, because the display is always on. And it’s 70% brighter indoors when your wrist is down.
+                  The larger display enhances the entire experience, making Apple Watch easier to use and read. <span>Apple Watch Series 7</span> represents our biggest and brightest thinking. You don’t need to raise your wrist or touch the screen to see the time or other information and complications on your watch face, because the display is always on. And it’s 70% brighter indoors when your wrist is down.
                 </p>
               </div>
 
               <div className={styles.watchInfoImg}>
-                {/* <img src={picSiries7} alt="picSiries7" />    ////////////// */}
+                <img src={picSiries7} alt="picSiries7" />   
               </div>
             </div>
 
