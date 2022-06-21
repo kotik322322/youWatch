@@ -1,0 +1,109 @@
+.auth {    
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    top: 0;
+    left: 0;
+    z-index: 20178;
+
+    &Body { 
+        min-height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+    }
+    &Content {  
+        width: 100%;
+        max-width: 600px;
+        background-color: #FFFFFF;
+        border-radius: 8px;
+        padding: 20px 20px;
+        position: relative;
+    }
+    
+    &Title {    
+        font-size: 24px;
+        line-height: 32px;
+        font-weight: 600;
+        margin: 10px 0 20px;
+    }
+    &Close {    
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 27px;
+        cursor: pointer;
+    }
+
+    &Item { 
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 12px;
+        width: 100%;
+        max-width: 450px;
+        margin: 0 auto; 
+    }
+    &Label {    
+        text-align: start;
+        padding-bottom: 4px;
+        display: flex; 
+        column-gap: 6px;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 16px;
+        color: #939393;
+        
+
+    }
+    &Input {   
+        outline: none;
+        width: 100%;
+        max-width: 450px;
+        height: 40px;
+        padding: 10px 12px;
+        font-weight: 400;
+        font-size: 14px;
+        color: #3a3a3a;
+        border: 1px solid #a3a3a38b;
+        box-sizing: border-box;
+        border-radius: 4px;
+        ::placeholder {  
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 20px;
+            color: #B0B0B0;
+        }
+        &:focus {     
+            box-shadow: -5px -5px 9px rgba(255,255,255,0.45), 5px 5px 9px rgba(94,104,121,0.3);
+        }
+    }
+    &Select {   
+        cursor: pointer;
+        outline: none;
+        width: 100%;
+        max-width: 450px;
+        height: 40px;
+        padding: 10px 12px;
+        font-weight: 400;
+        font-size: 14px;
+        color: #3a3a3a;
+        border: 1px solid #a3a3a38b;
+        box-sizing: border-box;
+        border-radius: 4px;
+    }
+    &Error {    
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 16px;
+        color: rgb(231, 1, 1);
+        
+    }
+    &Btn {  
+        margin-top: 10px;
+    }
+    
+
+}

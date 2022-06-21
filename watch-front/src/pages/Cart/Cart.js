@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import styles from './Cart.module.scss';
 import Button from '../../components/Button/Button';
 import Modal from '../../components/Modal/Modal';
-import { GlobalState } from "../../GloabalState"
+import { GlobalState } from "../../GloabalState";
 import CartItem from '../../components/CartItem/CartItem';
 
 
