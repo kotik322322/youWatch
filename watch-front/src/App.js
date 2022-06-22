@@ -17,6 +17,7 @@ import StorePage from './pages/StorePage/StorePage';
 import CardInfo from './pages/CardInfo/CardInfo';
 import MyAccount from './pages/MyAccount/MyAccount';
 import BlogInfo from './pages/BlogInfo/BlogInfo';
+import SignInModal from './components/Modal/SignInModal';
 
 
 
@@ -77,8 +78,13 @@ function App() {
 
           <Route path='/blog/:_id' element={<BlogInfo />} />
 
-
         </Routes>
+
+
+
+        {/* <SignInModal/> */}
+
+
 
         <Footer
           icons={icons}

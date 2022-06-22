@@ -1,4 +1,4 @@
-.auth {    
+.signin {    
     position: fixed;
     width: 100%;
     height: 100%;
@@ -10,17 +10,15 @@
     &Body { 
         min-height: 100%;
         display: flex;
-        justify-content: center;
-        align-items: center;
+        align-items: flex-end;
         flex-direction: column;
         text-align: center;
     }
-    
     &Content {  
         width: 100%;
-        max-width: 600px;
+        max-width: 400px;
         background-color: #FFFFFF;
-        border-radius: 8px;
+        border-radius: 0 0 0 8px;
         padding: 20px 20px;
         position: relative;
     }
@@ -29,8 +27,7 @@
         font-size: 24px;
         line-height: 32px;
         font-weight: 600;
-        margin: 10px 0 20px;
-
+        margin: 10px 0 30px;
     }
     &Close {    
         position: absolute;
@@ -43,11 +40,10 @@
     &Item { 
         display: flex;
         flex-direction: column;
-        padding-bottom: 12px;
+        padding-bottom: 50px;
         width: 100%;
-        max-width: 450px;
+        max-width: 380px;
         margin: 0 auto; 
-
     }
     &Label {    
         text-align: start;
@@ -55,24 +51,26 @@
         display: flex; 
         column-gap: 6px;
         font-weight: 500;
-        font-size: 12px;
-        line-height: 16px;
+        font-size: 14px;
+        line-height: 18px;
         color: #939393;
         
-    }
 
+    }
     &Input {   
         outline: none;
         width: 100%;
-        max-width: 450px;
+        max-width: 380px;
         height: 40px;
         padding: 10px 12px;
         font-weight: 400;
         font-size: 14px;
         color: #3a3a3a;
-        border: 1px solid #a3a3a38b;
+        border-bottom: 1px solid #a3a3a38b;
+        border-top: none;
+        border-left: none;
+        border-right: none;
         box-sizing: border-box;
-        border-radius: 4px;
         ::placeholder {  
             font-weight: 500;
             font-size: 14px;
@@ -80,21 +78,32 @@
             color: #B0B0B0;
         }
         &:focus {     
-            box-shadow: -5px -5px 9px rgba(255,255,255,0.45), 5px 5px 9px rgba(94,104,121,0.3);
+            border-bottom: 2px solid #6f6f6f8b;
         }
     }
-    
+
     &Error {    
         font-weight: 400;
-        font-size: 12px;
+        font-size: 14px;
         line-height: 16px;
         color: rgb(231, 1, 1);
         
     }
 
+    &Account {  
+        color: #3bb1f7ed;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 24px;
+        padding-bottom: 20px;
+        cursor: pointer;
+        &:hover {   
+            color: #243ed4ed;
+        }
+    }
+
     &Btn {  
-        margin-top: 10px;
+        margin: 30px 0;
     }
     
-
 }
