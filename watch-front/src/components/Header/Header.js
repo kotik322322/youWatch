@@ -7,14 +7,15 @@ import { MdOutlinePersonOutline } from 'react-icons/md';
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import { GrSearch } from "react-icons/gr";
 import { GlobalState } from "../../GloabalState";
-import AuthModal from '../Modal/AuthModal';
+import SignInModal from '../Modal/SignInModal';
 
 
 const Header = ({ icons }) => {
+  
   const state = React.useContext(GlobalState)
   const [cart, setCart] = state.cart
 
-  const [openAuthModal, setOpenAuthModal] = React.useState(false);
+  const [openSignInModal, setOpenSignInModal] = React.useState(false);
 
   const cartCounter = cart.reduce(
     (acc, item) => acc + item.quantity,
@@ -23,7 +24,7 @@ const Header = ({ icons }) => {
   return (
     <header className={styles.header}>
 
-    {openAuthModal && <AuthModal closeModal={setOpenAuthModal} />}  
+    {openSignInModal && <SignInModal closeSignInModal={setOpenSignInModal} />}  
 
       <div className={styles.headerWrapper}>
         <div className={styles.headerLogo}>
@@ -59,7 +60,7 @@ const Header = ({ icons }) => {
           </Link>
 
           <Link className={styles.headerIconPerson} to='/login'>
-            <MdOutlinePersonOutline style={{ fontSize: "33px", color: "#222222" }} onClick={() => setOpenAuthModal(true)}/>
+            <MdOutlinePersonOutline style={{ fontSize: "33px", color: "#222222" }} onClick={() => setOpenSignInModal(true)}/>
           </Link>
 
           <Link className={styles.headerIconCart} to='/cart'>

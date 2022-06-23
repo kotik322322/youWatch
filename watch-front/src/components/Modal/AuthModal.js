@@ -47,6 +47,7 @@ const AuthModal = (props) => {
                         <div className={styles.authContent}>
                             
                             <h2 className={styles.authTitle}>Create Account</h2>
+                            
                             <CgClose className={styles.authClose} onClick={ () => closeModal(false) }/>
                         
                             <div className={styles.authItem}>

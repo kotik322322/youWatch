@@ -4,13 +4,17 @@ import Button from '../Button/Button';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import { CgClose } from 'react-icons/cg';
+import AuthModal from './AuthModal';
 
 
 
 
-const SignInModal = (props) => {
 
-    const { closeModal } = props;
+const SignInModal = ({ closeSignInModal }) => {
+
+   
+    const [ openAuthModal, setOpenAuthModal ] = React.useState(false)
+
 
     const validationsSchema = yup.object().shape({
         email: yup.string().email('Enter correct e-mail address').required('is required!'),
@@ -19,6 +23,9 @@ const SignInModal = (props) => {
     
         return (
             <>
+
+            {openAuthModal && <AuthModal closeModal={setOpenAuthModal} />}
+
             <Formik 
                 const initialValues = {{
                     email: '',
@@ -42,7 +49,7 @@ const SignInModal = (props) => {
                         
                             <h2 className={styles.signinTitle}> Sign In</h2>
 
-                            <CgClose className={styles.signinClose} onClick={ () => closeModal(false) }/>
+                            <CgClose className={styles.signinClose} onClick={ () => closeSignInModal(false) }/>
             
 
                             <div className={styles.signinItem}>
@@ -71,7 +78,7 @@ const SignInModal = (props) => {
                                     />
                             </div>
 
-                            <div className={styles.signinAccount}>
+                            <div className={styles.signinAccount} onClick={ () => setOpenAuthModal(true) }>
                                 <span> Don't have an account yet? </span>
                             </div>
 
