@@ -17,7 +17,7 @@ import StorePage from './pages/StorePage/StorePage';
 import CardInfo from './pages/CardInfo/CardInfo';
 import MyAccount from './pages/MyAccount/MyAccount';
 import BlogInfo from './pages/BlogInfo/BlogInfo';
-import SignInModal from './components/Modal/SignInModal';
+// import AuthModal from './components/Modal/AuthModal';
 
 
 
@@ -82,7 +82,7 @@ function App() {
 
 
 
-        {/* <SignInModal/> */}
+        {/* <AuthModal /> */}
 
 
 

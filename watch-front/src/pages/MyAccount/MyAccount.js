@@ -77,12 +77,8 @@ const MyAccount = () => {
 
                         </div>
 
-
-
                     </div>
 
-
-                      
 
             </div>
         </div>

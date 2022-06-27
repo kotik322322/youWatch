@@ -4,12 +4,16 @@ import Button from '../Button/Button';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import { CgClose } from 'react-icons/cg';
+import PhoneInput from 'react-phone-number-input';
+import 'react-phone-number-input/style.css';
 
 
 
 const AuthModal = (props) => {
 
     const { closeModal } = props;
+
+    const [ value, setValue ] = React.useState()
 
     const validationsSchema = yup.object().shape({
         userName: yup.string().matches(/^[A-zА-яЁё]+$/, 'must contain only letters').required('is required!'),
@@ -18,6 +22,7 @@ const AuthModal = (props) => {
         confirmPassword: yup.string().oneOf( [ yup.ref('password') ], 'You entered two different passwords. Please try again.' ).required('is required!'),
         email: yup.string().email('Enter correct e-mail address').required('is required!'),
         confirmEmail: yup.string().email('Enter correct e-mail address').oneOf( [ yup.ref('email') ], 'You entered two different e-mail address. Please try again.' ).required('is required!'),
+        phone: yup.string().required('is required!'),
     });
     
         return (
@@ -30,6 +35,7 @@ const AuthModal = (props) => {
                     confirmPassword: '',
                     email: '',
                     confirmEmail: '',
+                    phone: '',
                 }}
 
                 validateOnBlur
@@ -125,6 +131,19 @@ const AuthModal = (props) => {
                                         onChange={handleChange}
                                         onBlur={handleBlur}
                                         value={values.confirmEmail} 
+                                    />
+                            </div>
+
+                            <div className={styles.authItem}>
+                                <label className={styles.authLabel} htmlFor={`phone`}> Phone {touched.value && errors.value && <p className={styles.authError}> { errors.value } </p> } </label> 
+                                    <PhoneInput
+                                        className={styles.authPhone}
+                                        placeholder='Enter phone number'
+                                        type={`phone`}
+                                        name={`phone`}
+                                        onChange={setValue}
+                                        onBlur={handleBlur}
+                                        value={value} 
                                     />
                             </div>
 
